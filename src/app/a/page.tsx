@@ -15,7 +15,7 @@ import AItem from './AItem'
 
 export default function AlphabetPage() {
   return (
-    <Group align="start" gap={48}>
+    <Group align="start" gap={96}>
       <Stack gap={32}>
         <GradientTitle>创作</GradientTitle>
 
