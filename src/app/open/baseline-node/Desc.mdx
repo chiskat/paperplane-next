@@ -23,7 +23,7 @@ CI/CD 定时任务每周都会检查 Node.js 和 pnpm 的版本，如果有更�
 所有版本均已配置好并通过 `corepack` 开启 `pnpm`。
 
 无后缀版本基于 Node.js 官方的 `-slim` 镜像；<br />
-所有 `-alpine` 后缀版本基于 Node.js 官方的 `-alpine` 版本，体积最小，但已预装 `libc6-compat` 相关系统组件，从而兼容 Next.js；<br />
-所有 `-full` 后缀版本基于 Node.js 官方的无后缀镜像，兼容性最佳，但体积较大。
+`-alpine` 后缀版本基于官方 `-alpine` 版本，但已预装 `libc6-compat` 相关系统组件，从而兼容 Next.js 等工具；<br />
+`-full` 后缀版本基于官方的无后缀镜像，兼容性最佳，但体积较大。
 
 此外，所有 `-puppeteer` 后缀版本则在原版基础上，预装 Chromium 以及相关依赖和一些开源字体（其中也包括一套开源 Emoji 字体，但不包含 “微软雅黑” 等版权字体），同时为 `puppeteer` 配置好了浏览器的启动路径和免下载标志位，可以开箱即用。
