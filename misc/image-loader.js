@@ -1,3 +1,6 @@
-export default function cosLoader({ src, width, quality }) {
-  return `${src}?thumbnail/${width}x/quality/${quality || 100}/ignore-error/1`
+export default function cloudflareLoader({ src, width, quality }) {
+  const { origin, pathname } = new URL(src)
+  const params = [`width=${width}`, `quality=${quality || 75}`, 'format=auto']
+
+  return `${origin}/cdn-cgi/image/${params.join(',')}${pathname}`
 }
