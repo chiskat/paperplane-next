@@ -1,4 +1,4 @@
-FROM paperplanecc/baseline-node20:2025.10.26
+FROM paperplanecc/baseline-node20:2025.11.30
 
 ARG NPM_REGISTRY=https://registry.npmjs.org
 
