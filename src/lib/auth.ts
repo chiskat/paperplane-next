@@ -13,21 +13,23 @@ export const auth = betterAuth({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   basePath: '/api/auth',
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
-  secondaryStorage: {
-    get: async key => {
-      return await redis.get(key)
-    },
-    set: async (key, value, ttl) => {
-      if (ttl) {
-        await redis.set(key, value, 'EX', ttl)
-      } else {
-        await redis.set(key, value)
-      }
-    },
-    delete: async key => {
-      await redis.del(key)
-    },
-  },
+  secondaryStorage: process.env.CI
+    ? undefined
+    : {
+        get: async key => {
+          return await redis.get(key)
+        },
+        set: async (key, value, ttl) => {
+          if (ttl) {
+            await redis.set(key, value, 'EX', ttl)
+          } else {
+            await redis.set(key, value)
+          }
+        },
+        delete: async key => {
+          await redis.del(key)
+        },
+      },
   plugins: [
     genericOAuth({
       config: [
