@@ -60,7 +60,7 @@ steps:
         - cd /root/project-config/paperplane-next
         - |
           docker run -t --rm --name paperplane-next-prisma --network root_default -e NODE_ENV=production \
-          -v ./.env.production.local:/paperplane-next/packages/db/.env.production.local:ro \
+          -v ./.env.production.local:/paperplane-next/.env.production.local:ro \
           paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8} pnpm db:deploy
 
   - name: deploy
