@@ -7,7 +7,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CSSProperties, useId, useMemo, useState } from 'react'
 
-import { AwesomeItemResult } from '@/app/api/awesome'
+import { AwesomeItemResult } from '@/app/api/awesome/items'
 import { useTRPC } from '@/lib/trpc-client'
 
 import { useAwesome } from '../state'
@@ -75,12 +75,26 @@ export default function ListItemGroup(props: ListItemGroupProps) {
   }
 
   if (!edit && list.length <= 0) {
-    return null
+    return <div className={clsx(className, `awesome__catelog-group__id-${catelog.id}`)}></div>
   }
 
   return (
-    <Stack className={clsx(className)} pos="relative" style={style} pr={24} gap={4} pb={12}>
-      <Group className="z-10 rounded-md bg-white" pos="sticky" top={0} py={4} left={0} gap={6}>
+    <Stack
+      className={clsx(className, `awesome__catelog-group__id-${catelog.id}`)}
+      pos="relative"
+      style={style}
+      pr={24}
+      gap={4}
+      pb={12}
+    >
+      <Group
+        className="z-10 rounded-md bg-gradient-to-b from-white via-white via-85% to-transparent"
+        pos="sticky"
+        top={0}
+        py={8}
+        left={0}
+        gap={6}
+      >
         {catelog.parent ? (
           <Text c="gray.4" size="sm">
             {catelog.parent.name} /

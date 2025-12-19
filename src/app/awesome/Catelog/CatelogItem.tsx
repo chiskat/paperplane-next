@@ -18,23 +18,25 @@ import clsx from 'clsx'
 import { CSSProperties, useId, useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { AwesomeCatelogNode } from '@/app/api/awesome/catelogs'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
 
-import { AwesomeCatelogNode } from '../../api/awesome'
+import { awesomeScrollIntoViewEmitter } from '../state'
 import CatelogEditButton from './CatelogEditButton'
 
 export interface CatelogItemProps {
   catelog: AwesomeCatelogNode
   parent?: AwesomeCatelogNode
   edit?: boolean
+  expand?: boolean
   className?: string
   style?: CSSProperties
 }
 
 export default function CatelogItem(props: CatelogItemProps & DraggableWrapperProps) {
-  const { catelog, parent, edit, className, style, attributes, listeners, ref } = props
+  const { catelog, parent, edit, expand, className, style, attributes, listeners, ref } = props
   const { children } = catelog
 
   const mounted = useMounted()
@@ -94,6 +96,7 @@ export default function CatelogItem(props: CatelogItemProps & DraggableWrapperPr
   }
 
   const isChild = catelog.parentId
+  const isExpand = edit || expand
 
   return (
     <Stack
@@ -111,10 +114,11 @@ export default function CatelogItem(props: CatelogItemProps & DraggableWrapperPr
         ) : null}
 
         <Text
-          style={{ fontSize: isChild ? '16px' : '18px' }}
-          c={isChild ? 'gray.6' : 'gray.9'}
+          style={{ fontSize: isChild ? '14px' : '16px' }}
+          c={isChild ? 'gray.6' : 'gray.8'}
           lh={isChild ? 1.2 : 1.4}
-          className="cursor-pointer"
+          className="cursor-pointer underline-offset-2 hover:underline"
+          onClick={() => awesomeScrollIntoViewEmitter.emit('selectId', catelog.id)}
         >
           {catelog.name}
         </Text>
@@ -146,8 +150,8 @@ export default function CatelogItem(props: CatelogItemProps & DraggableWrapperPr
         </Group>
       ) : null}
 
-      {children.length > 0 ? (
-        <Stack mt={4} gap={2} ml={8}>
+      {children.length > 0 && isExpand ? (
+        <Stack mt={4} gap={2}>
           <DndContext
             id={dndContextId}
             onDragStart={e => void setDragging(children.find(item => item.id === e.active.id)!)}

@@ -1,27 +1,26 @@
+import mitt from 'mitt'
 import { create } from 'zustand'
 
 interface UseAwesome {
   edit: boolean
   setEdit(edit: boolean): void
 
-  tags: string[]
-  setTags(tags: string[]): void
-  selectTag(tagId: string): void
-  cancelTag(tagId: string): void
+  catelogExpand: boolean
+  setCatelogExpand(expand: boolean): void
 
   search: string
   setSearch(search: string): void
 }
 
-export const useAwesome = create<UseAwesome>()((set, get) => ({
+export const useAwesome = create<UseAwesome>()(set => ({
   edit: false,
   setEdit: edit => void set({ edit }),
 
-  tags: [],
-  setTags: tags => void set({ tags }),
-  selectTag: tagId => void set({ tags: [...get().tags, tagId] }),
-  cancelTag: tagId => void set({ tags: get().tags.filter(item => item !== tagId) }),
+  catelogExpand: false,
+  setCatelogExpand: expand => void set({ catelogExpand: expand }),
 
   search: '',
   setSearch: (search: string) => void set({ search }),
 }))
+
+export const awesomeScrollIntoViewEmitter = mitt<{ selectId: string }>()

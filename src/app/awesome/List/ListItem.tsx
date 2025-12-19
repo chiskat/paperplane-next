@@ -2,12 +2,12 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Group, Text, Tooltip } from '@mantine/core'
 import { AwesomeCatelog } from '@prisma/client'
-import { IconGripVertical } from '@tabler/icons-react'
+import { IconGripVertical, IconMichelinStar, IconPointFilled } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CSSProperties } from 'react'
 
-import { AwesomeItemResult } from '@/app/api/awesome'
+import { AwesomeItemResult } from '@/app/api/awesome/items'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
@@ -43,6 +43,16 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
     })
   }
 
+  const stars = awesome.stars || 0
+  const starMarkTooltip =
+    stars >= 5
+      ? `5星 · 不可错过 & 强烈推荐！`
+      : stars >= 4
+        ? `4星 · 推荐尝试！`
+        : stars >= 1
+          ? `${stars}星`
+          : '未分级'
+
   return (
     <Group
       className={clsx(
@@ -50,7 +60,7 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
         className
       )}
       gap={8}
-      px={12}
+      px={8}
       py={2}
       style={style}
       ref={ref}
@@ -63,6 +73,22 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
           {...listeners}
         />
       ) : null}
+
+      <Tooltip label={starMarkTooltip}>
+        {stars >= 5 ? (
+          <IconMichelinStar size="0.7em" className="raw text-ma cursor-pointer leading-[1.3]" />
+        ) : stars >= 4 ? (
+          <IconMichelinStar
+            size="0.7em"
+            className="raw cursor-pointer leading-[1.3] text-gray-500"
+          />
+        ) : (
+          <IconPointFilled
+            size="0.7em"
+            className="raw cursor-pointer leading-[1.3] text-gray-500"
+          />
+        )}
+      </Tooltip>
 
       <Tooltip label={awesome.desc} disabled={!awesome.desc}>
         <Text c="gray.9" className="shrink-0 cursor-pointer text-[18px] leading-[1.3]">

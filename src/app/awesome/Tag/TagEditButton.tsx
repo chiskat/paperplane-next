@@ -183,7 +183,7 @@ export default function TagEditButton(props: TagEditButtonProps) {
             <Stack gap={4}>
               <Text size="sm">预览标签：</Text>
               <Box p="sm" className="rounded-md bg-gray-100 text-center">
-                <TagItem tag={preview} />
+                <TagItem className="inline-flex" tag={preview} />
               </Box>
             </Stack>
 

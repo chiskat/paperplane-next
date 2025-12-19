@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Group, luminance, Text, Tooltip } from '@mantine/core'
 import { AwesomeTag } from '@prisma/client'
-import { IconCircleCheckFilled, IconGripVertical } from '@tabler/icons-react'
+import { IconGripVertical } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CSSProperties } from 'react'
@@ -16,15 +16,12 @@ import TagEditButton from './TagEditButton'
 export interface TagItemProps {
   tag: AwesomeTag
   edit?: boolean
-  checked?: boolean
-  onCheckedChange?(checked: boolean): void
   className?: string
   style?: CSSProperties
 }
 
 export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
-  const { tag, edit, checked, onCheckedChange, className, style, attributes, listeners, ref } =
-    props
+  const { tag, edit, className, style, attributes, listeners, ref } = props
   const { label, desc, icon, color } = tag
   const trpc = useTRPC()
   const queryClient = useQueryClient()
@@ -47,32 +44,19 @@ export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
 
   return (
     <Group
-      className={clsx(
-        'relative cursor-pointer flex-nowrap rounded-full border-[1px] border-solid select-none',
-        edit ? 'flex' : 'inline-flex',
-        className
-      )}
-      gap={6}
-      px={12}
-      py={2}
+      className={clsx('relative flex cursor-pointer flex-nowrap rounded-md select-none', className)}
+      gap={8}
+      px={8}
+      py={4}
       align="center"
-      onClick={() => {
-        if (!edit) {
-          onCheckedChange?.(!checked)
-        }
-      }}
       ref={ref}
-      style={{
-        ...style,
-        borderColor: checked ? `#0bae4a` : lum > 0.7 ? `#333` : bg,
-        backgroundColor: bg,
-      }}
+      style={{ ...style, backgroundColor: bg }}
       {...attributes}
     >
       {edit ? (
         <IconGripVertical
           size="1em"
-          className="raw shrink-0 cursor-move text-gray-400"
+          className="raw shrink-0 cursor-move text-gray-500"
           {...listeners}
         />
       ) : null}
@@ -92,13 +76,7 @@ export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
 
       {edit ? (
         <>
-          <TagEditButton
-            className="shrink-0"
-            size="compact-xs"
-            tag={tag}
-            variant="filled"
-            color="yellow"
-          >
+          <TagEditButton className="shrink-0" size="compact-xs" tag={tag} variant="light">
             编辑
           </TagEditButton>
           <ConfirmButton
@@ -108,7 +86,7 @@ export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
             onConfirm={() => void deleteHandler()}
             className="shrink-0"
             size="compact-xs"
-            variant="filled"
+            variant="light"
             color="red"
           >
             删除

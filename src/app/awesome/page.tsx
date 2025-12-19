@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Grid, GridCol, Group, Stack, TextInput } from '@mantine/core'
+import { Button, Grid, GridCol, Group, SegmentedControl, Stack, TextInput } from '@mantine/core'
 import { useDebouncedCallback } from '@mantine/hooks'
-import { IconSearch } from '@tabler/icons-react'
+import { IconListTree, IconMenu2, IconSearch } from '@tabler/icons-react'
 import { useState } from 'react'
 
 import GradientTitle from '@/components/labels/GradientTitle'
@@ -12,8 +12,7 @@ import Catelog from './Catelog/Catelog'
 import CatelogEditButton from './Catelog/CatelogEditButton'
 import List from './List/List'
 import ListItemEditButton from './List/ListItemEditButton'
-import Tag from './Tag/Tag'
-import TagEditButton from './Tag/TagEditButton'
+import TagPanelButton from './Tag/TagPanelButton'
 import { useAwesome } from './state'
 
 const headerTop = 130 + 16
@@ -22,9 +21,14 @@ const headerHeight = 50
 const listTop = headerTop + headerHeight + 16
 const listHeight = `calc(100vh - ${listTop + 32}px)`
 
+const foldTogglerData = [
+  { label: <IconMenu2 />, value: 'fold' },
+  { label: <IconListTree />, value: 'expand' },
+]
+
 export default function AwesomePage() {
   const [searchText, setSearchText] = useState('')
-  const { edit, setEdit, setSearch, setTags } = useAwesome()
+  const { edit, catelogExpand, setEdit, setSearch, setCatelogExpand } = useAwesome()
   const { data: user } = useLoginUser()
 
   const debouncedSetSearch = useDebouncedCallback(setSearch, 200)
@@ -43,11 +47,19 @@ export default function AwesomePage() {
               <CatelogEditButton size="compact" variant="light" className="ml-auto">
                 添加类别
               </CatelogEditButton>
-            ) : null}
+            ) : (
+              <SegmentedControl
+                value={catelogExpand ? 'expand' : 'fold'}
+                onChange={value => void setCatelogExpand(value === 'expand')}
+                data={foldTogglerData}
+                size="xs"
+                className="ml-auto"
+              />
+            )}
           </Group>
         </GridCol>
 
-        <GridCol span={8}>
+        <GridCol span={10}>
           <Group gap={8} pr={20}>
             <TextInput
               leftSectionPointerEvents="none"
@@ -66,6 +78,12 @@ export default function AwesomePage() {
                 </ListItemEditButton>
 
                 {edit ? (
+                  <TagPanelButton size="compact" variant="light">
+                    管理标签
+                  </TagPanelButton>
+                ) : null}
+
+                {edit ? (
                   <Button
                     size="compact"
                     variant="light"
@@ -80,7 +98,6 @@ export default function AwesomePage() {
                     variant="light"
                     onClick={() => {
                       setSearch('')
-                      setTags([])
                       setEdit(true)
                     }}
                   >
@@ -91,17 +108,6 @@ export default function AwesomePage() {
             ) : null}
           </Group>
         </GridCol>
-
-        <GridCol span={2}>
-          <Group>
-            <GradientTitle>标签：</GradientTitle>
-            {edit ? (
-              <TagEditButton size="compact" variant="light" className="ml-auto">
-                添加标签
-              </TagEditButton>
-            ) : null}
-          </Group>
-        </GridCol>
       </Grid>
 
       <Grid pos="sticky" gutter="lg" top={listTop} left={0}>
@@ -109,12 +115,8 @@ export default function AwesomePage() {
           <Catelog scrollHeight={listHeight} />
         </GridCol>
 
-        <GridCol span={8} pr={24}>
+        <GridCol span={10} pr={24} py={0}>
           <List scrollHeight={listHeight} />
-        </GridCol>
-
-        <GridCol span={2}>
-          <Tag scrollHeight={listHeight} />
         </GridCol>
       </Grid>
     </Stack>
