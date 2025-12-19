@@ -1,3 +1,3 @@
 export default function ResourcePage() {
-  return <div>Res</div>
+  return <div></div>
 }
