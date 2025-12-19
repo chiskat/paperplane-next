@@ -11,7 +11,7 @@ volumes:
 
 trigger:
   branch:
-    - master
+    - main
 
 steps:
   - name: prepare
