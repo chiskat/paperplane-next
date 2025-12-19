@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/schema.prisma\"",
     "check-types": "tsc --noEmit",
-    "start:prod": "dotenv -e .env.production.local -e .env.production node ./.next/standalone/server.js",
+    "start:prod": "dotenv -c production node ./.next/standalone/server.js",
     "db:gen": "pnpm db:generate",
     "db:generate": "prisma generate",
     "db:mi": "pnpm db:migrate",
