@@ -2,7 +2,7 @@
 
 import { Flex, Group, Image, SegmentedControl, Stack, Text } from '@mantine/core'
 import NextImage from 'next/image'
-import { redirect, usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { ReactNode, useEffect, useMemo } from 'react'
 
 const vendorOptions = [
@@ -61,7 +61,7 @@ export default function OpenLayout(props: { children: ReactNode }) {
           <Text className="font-serif">类型：</Text>
           <SegmentedControl
             value={vendor}
-            onChange={item => void redirect(`/registry/${item}-${registryType}`)}
+            onChange={item => void router.replace(`/registry/${item}-${registryType}`)}
             data={vendorOptions}
           />
         </Stack>
@@ -69,7 +69,7 @@ export default function OpenLayout(props: { children: ReactNode }) {
           <Text className="font-serif">仓库：</Text>
           <SegmentedControl
             value={registryType}
-            onChange={item => void redirect(`/registry/${vendor}-${item}`)}
+            onChange={item => void router.replace(`/registry/${vendor}-${item}`)}
             data={registryTypeOptions}
           />
         </Stack>
