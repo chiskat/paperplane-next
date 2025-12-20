@@ -4,7 +4,7 @@
     "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
-    "build:prod": "dotenv -v CI=true -- next build",
+    "build:prod": "dotenv -c production -v CI=true -- next build",
     "start": "next start",
     "start:prod": "dotenv -e .env.production.local -e .env.production -- node ./.next/standalone/server.js",
     "theme": "npx tailwind-preset-mantine ./src/app/theme.ts -o ./src/styles/theme.css && npx prettier --write ./src/styles/theme.css",
