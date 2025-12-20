@@ -1,7 +1,7 @@
 import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
-import { DockerTag, NodejsTag } from '@/components/tags/TechTag'
+import { DockerTag } from '@/components/tags/TechTag'
 
 import { OpenDetailTable } from '../details'
 import Desc from './Desc.mdx'
@@ -14,7 +14,7 @@ export default function DockerApiPage() {
     <Stack gap={12}>
       <GradientTitle>{name}</GradientTitle>
       <Divider />
-      <OpenDetailTable type="docker" name={name} repo={repo} tech={[NodejsTag, DockerTag]} />
+      <OpenDetailTable type="docker" name={name} repo={repo} tech={[DockerTag]} />
       <Divider />
       <Desc />
     </Stack>

@@ -53,17 +53,17 @@ export function OpenDetailTable(props: OpenDetailTableProps) {
       <KVTableRow label="版本" icon={<IconVersions />}>
         <Group gap={12}>
           {type === 'docker' ? (
-            <a href={`https://hub.docker.com/r/${overrideNameInLink}`} target="_blank">
+            <a href={`https://hub.docker.com/r/${nameInLink}`} target="_blank">
               <img
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/docker/v/${overrideNameInLink}?logo=docker&sort=semver`}
+                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/docker/v/${nameInLink}?logo=docker&sort=semver`}
                 alt="image version on docker hub"
                 className="h-[20px]"
               />
             </a>
           ) : (
-            <a href={`https://npmjs.com/package/${overrideNameInLink}`} target="_blank">
+            <a href={`https://npmjs.com/package/${nameInLink}`} target="_blank">
               <img
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/npm/v/${overrideNameInLink}?logo=npm`}
+                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/npm/v/${nameInLink}?logo=npm`}
                 alt="package version on npm"
                 className="h-[20px]"
               />
