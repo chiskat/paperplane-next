@@ -12,7 +12,7 @@
     "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/schema.prisma\"",
     "check-types": "tsc --noEmit",
     "db:gen": "pnpm db:generate",
-    "db:generate": "prisma generate && npx prettier --write ./src/prisma/**/*.ts --log-level silent",
+    "db:generate": "dotenv -c development -- prisma generate && npx prettier --write ./src/prisma/**/*.ts --log-level silent",
     "db:mi": "pnpm db:migrate",
     "db:migrate": "dotenv -c development -- prisma migrate dev",
     "db:push": "dotenv -c development -- prisma db push",
