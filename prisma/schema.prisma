@@ -1,10 +1,10 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRESQL_URL")
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/prisma"
 }
 
 /// 用户（由 btter-auth 创建）

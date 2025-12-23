@@ -1,7 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Group, luminance, Text, Tooltip } from '@mantine/core'
-import { AwesomeTag } from '@prisma/client'
 import { IconGripVertical } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
@@ -10,6 +9,7 @@ import { CSSProperties } from 'react'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
+import { AwesomeTag } from '@/prisma/client'
 
 import TagEditButton from './TagEditButton'
 

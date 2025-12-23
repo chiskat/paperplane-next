@@ -11,6 +11,7 @@ import { createTRPCContext } from '@trpc/tanstack-react-query'
 import superjson from 'superjson'
 
 import type { AppRouter } from '../app/api/appRouter'
+import { transformFormDataLink } from './form-data-transformer'
 
 function getUrl() {
   return typeof window === 'undefined'
@@ -20,16 +21,15 @@ function getUrl() {
 
 export const trpcClientConfig: Parameters<typeof createTRPCProxyClient>[0] = {
   links: [
+    transformFormDataLink,
+
     splitLink({
       condition: op => isNonJsonSerializable(op.input),
       true: httpLink({
         url: getUrl(),
         transformer: { serialize: data => data, deserialize: superjson.deserialize },
       }),
-      false: httpBatchLink({
-        transformer: superjson,
-        url: getUrl(),
-      }),
+      false: httpBatchLink({ url: getUrl(), transformer: superjson }),
     }),
   ],
 }

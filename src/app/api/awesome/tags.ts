@@ -1,14 +1,13 @@
 import 'server-only'
 
 import { createId } from '@paralleldrive/cuid2'
-import { AwesomeTag, Prisma } from '@prisma/client'
-import { parse } from 'superjson'
 
-import { awesomeTagDeleteZod } from '@/app/zod/awesome'
-import { resortZod } from '@/app/zod/common'
+import { awesomeTagZod } from '@/app/zod/awesome'
+import { deleteZod, resortZod } from '@/app/zod/common'
 import { prisma } from '@/lib/prisma'
 import { publicUpload } from '@/lib/s3-public'
 import { loginProcedure, publicProcedure, router } from '@/lib/trpc'
+import { Prisma } from '@/prisma/client'
 
 async function uploadTagIcon(file: File): Promise<string> {
   return publicUpload(`/awesome/tags/icon/${createId()}`, Buffer.from(await file.arrayBuffer()), {
@@ -19,33 +18,27 @@ async function uploadTagIcon(file: File): Promise<string> {
 export const tags = router({
   list: publicProcedure.query(() => prisma.awesomeTag.findMany({ orderBy: { index: 'asc' } })),
 
-  add: loginProcedure
-    .input(t => t as FormData)
-    .mutation(async ({ input }) => {
-      const data = parse(input.get('rest') as string) as AwesomeTag
-      if (input.get('iconFile')) {
-        const iconFile = input.get('iconFile')
-        data.icon = await uploadTagIcon(iconFile as File)
-      }
+  add: loginProcedure.input(awesomeTagZod).mutation(async ({ input }) => {
+    if (input.iconFile) {
+      input.icon = await uploadTagIcon(input.iconFile as File)
+      delete input.iconFile
+    }
 
-      return prisma.awesomeTag.create({
-        data: { ...(data as any), index: await prisma.awesomeTag.count() },
-      })
-    }),
+    return prisma.awesomeTag.create({
+      data: { ...input, index: await prisma.awesomeTag.count() },
+    })
+  }),
 
-  update: loginProcedure
-    .input(t => t as FormData)
-    .mutation(async ({ input }) => {
-      const data = parse(input.get('rest') as string) as AwesomeTag
-      if (input.get('iconFile')) {
-        const iconFile = input.get('iconFile')
-        data.icon = await uploadTagIcon(iconFile as File)
-      }
+  update: loginProcedure.input(awesomeTagZod).mutation(async ({ input }) => {
+    if (input.iconFile) {
+      input.icon = await uploadTagIcon(input.iconFile as File)
+      delete input.iconFile
+    }
 
-      return prisma.awesomeTag.update({ where: { id: data.id }, data })
-    }),
+    return prisma.awesomeTag.update({ where: { id: input.id }, data: input })
+  }),
 
-  delete: loginProcedure.input(awesomeTagDeleteZod).mutation(async ({ input }) => {
+  delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeTag.findFirstOrThrow({ where: { id: input.id } })
 
     await Promise.all([
@@ -63,11 +56,9 @@ export const tags = router({
       ' '
     )
     await prisma.$executeRaw`
-        UPDATE "awesome_tag"
-        SET "index" = (CASE "id"
-          ${caseSql}
-        END)
-        WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
-      `
+      UPDATE "awesome_tag"
+      SET "index" = (CASE "id" ${caseSql} END)::integer
+      WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
+    `
   }),
 })

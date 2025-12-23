@@ -1,10 +1,14 @@
 import 'server-only'
 
-import { PrismaClient } from '@prisma/client'
+import { PrismaPg } from '@prisma/adapter-pg'
+
+import { PrismaClient } from '@/prisma/client'
 
 export const prisma =
   (globalThis.prisma as PrismaClient) ||
-  (process.env.CI ? (null as unknown as PrismaClient) : new PrismaClient())
+  (process.env.CI
+    ? (null as unknown as PrismaClient)
+    : new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.POSTGRESQL_URL }) }))
 
 if (process.env.NODE_ENV !== 'production') {
   globalThis.prisma = prisma

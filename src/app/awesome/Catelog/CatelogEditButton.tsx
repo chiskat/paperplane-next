@@ -12,14 +12,14 @@ import {
 } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { notifications } from '@mantine/notifications'
-import { AwesomeCatelog } from '@prisma/client'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { pick } from 'lodash-es'
 import { zod4Resolver } from 'mantine-form-zod-resolver'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { awesomeCatelogAddZod, awesomeCatelogZod } from '@/app/zod/awesome'
+import { awesomeCatelogZod } from '@/app/zod/awesome'
 import { useTRPC } from '@/lib/trpc-client'
+import { AwesomeCatelog } from '@/prisma/client'
 
 export interface CatelogEditButtonProps
   extends ButtonProps,
@@ -35,6 +35,9 @@ export default function CatelogEditButton(props: CatelogEditButtonProps) {
 
   const [opened, setOpened] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => void setLoading(false), [opened])
+
   const initialValues = {
     ...pick(catelog, ['id', 'parentId', 'name', 'desc']),
     parentId: parent ? parent.id : undefined,
@@ -42,7 +45,7 @@ export default function CatelogEditButton(props: CatelogEditButtonProps) {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues,
-    validate: zod4Resolver(catelog ? awesomeCatelogZod : awesomeCatelogAddZod),
+    validate: zod4Resolver(awesomeCatelogZod),
   })
 
   const mutation = useMutation(
@@ -66,7 +69,7 @@ export default function CatelogEditButton(props: CatelogEditButtonProps) {
         ])
         setOpened(false)
       },
-      onSettled() {
+      onError() {
         setLoading(false)
       },
     })

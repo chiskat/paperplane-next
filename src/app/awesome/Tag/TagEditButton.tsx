@@ -15,16 +15,15 @@ import {
 } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { notifications } from '@mantine/notifications'
-import { AwesomeTag } from '@prisma/client'
 import { IconPhoto } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { pick } from 'lodash-es'
 import { zod4Resolver } from 'mantine-form-zod-resolver'
-import { useMemo, useState } from 'react'
-import { stringify } from 'superjson'
+import { useEffect, useMemo, useState } from 'react'
 
-import { awesomeTagAddZod, awesomeTagZod } from '@/app/zod/awesome'
+import { awesomeTagZod } from '@/app/zod/awesome'
 import { useTRPC } from '@/lib/trpc-client'
+import { AwesomeTag } from '@/prisma/client'
 
 import TagItem from './TagItem'
 
@@ -44,6 +43,9 @@ export default function TagEditButton(props: TagEditButtonProps) {
   const [opened, setOpened] = useState(false)
   const [loading, setLoading] = useState(false)
   const [previewTag, setPreviewTag] = useState<DraftAwesomeTag>()
+
+  useEffect(() => void setLoading(false), [opened])
+
   const initialValues = useMemo(() => {
     const result = pick(tag, ['id', 'label', 'desc', 'color', 'icon']) as DraftAwesomeTag
     if (!result.color) {
@@ -57,18 +59,7 @@ export default function TagEditButton(props: TagEditButtonProps) {
     mode: 'uncontrolled',
     initialValues,
     onValuesChange: values => void setPreviewTag({ ...values }),
-    transformValues(values) {
-      const { iconFile, ...rest } = values
-
-      const formData = new FormData()
-      formData.set('rest', stringify(rest))
-      if (iconFile) {
-        formData.set('iconFile', iconFile as any)
-      }
-
-      return formData
-    },
-    validate: zod4Resolver(tag ? awesomeTagZod : awesomeTagAddZod) as any,
+    validate: zod4Resolver(awesomeTagZod) as any,
   })
 
   const mutation = useMutation(
@@ -77,7 +68,7 @@ export default function TagEditButton(props: TagEditButtonProps) {
 
   const submitHandler = form.onSubmit(async value => {
     setLoading(true)
-    await mutation.mutateAsync(value as any, {
+    await mutation.mutateAsync(value, {
       async onSuccess(res) {
         notifications.show({
           color: 'green',
@@ -90,7 +81,7 @@ export default function TagEditButton(props: TagEditButtonProps) {
         ])
         setOpened(false)
       },
-      onSettled() {
+      onError() {
         setLoading(false)
       },
     })
@@ -176,6 +167,7 @@ export default function TagEditButton(props: TagEditButtonProps) {
               accept="image/*"
               placeholder="点击上传图标图片，可留空"
               clearable
+              classNames={{ input: 'text-[16px] leading-[36px]' }}
               key={form.key('iconFile')}
               {...form.getInputProps('iconFile')}
             />

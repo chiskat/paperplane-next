@@ -1,11 +1,12 @@
 import 'server-only'
 
-import { AwesomeCatelog, Prisma } from '@prisma/client'
 import { omit } from 'lodash-es'
 
-import { awesomeCatelogAddZod, awesomeCatelogDeleteZod, awesomeCatelogZod } from '@/app/zod/awesome'
+import { awesomeCatelogZod } from '@/app/zod/awesome'
+import { deleteZod, resortZod } from '@/app/zod/common'
 import { prisma } from '@/lib/prisma'
 import { loginProcedure, publicProcedure, router } from '@/lib/trpc'
+import { AwesomeCatelog, Prisma } from '@/prisma/client'
 
 export interface AwesomeCatelogNode extends AwesomeCatelog {
   children: AwesomeCatelogNode[]
@@ -49,7 +50,7 @@ export const catelogs = router({
     return result
   }),
 
-  add: loginProcedure.input(awesomeCatelogAddZod).mutation(async ({ input }) => {
+  add: loginProcedure.input(awesomeCatelogZod).mutation(async ({ input }) => {
     const index = input.parentId
       ? await prisma.awesomeCatelog.count({ where: { parentId: input.parentId } })
       : await prisma.awesomeCatelog.count()
@@ -63,7 +64,7 @@ export const catelogs = router({
       prisma.awesomeCatelog.update({ where: { id: input.id }, data: omit(input, 'children') })
     ),
 
-  delete: loginProcedure.input(awesomeCatelogDeleteZod).mutation(async ({ input }) => {
+  delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeCatelog.findFirstOrThrow({ where: { id: input.id } })
 
     await Promise.all([
@@ -75,19 +76,15 @@ export const catelogs = router({
     ])
   }),
 
-  resort: loginProcedure
-    .input(t => t as { id: string; index: number }[])
-    .mutation(async ({ input }) => {
-      const caseSql = Prisma.join(
-        input.map(item => Prisma.sql`WHEN ${item.id} THEN ${item.index}`),
-        ' '
-      )
-      await prisma.$executeRaw`
-        UPDATE "awesome_catelog"
-        SET "index" = (CASE "id"
-          ${caseSql}
-        END)
-        WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
-      `
-    }),
+  resort: loginProcedure.input(resortZod).mutation(async ({ input }) => {
+    const caseSql = Prisma.join(
+      input.map(item => Prisma.sql`WHEN ${item.id} THEN ${item.index}`),
+      ' '
+    )
+    await prisma.$executeRaw`
+      UPDATE "awesome_catelog"
+      SET "index" = (CASE "id" ${caseSql} END)::integer
+      WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
+    `
+  }),
 })

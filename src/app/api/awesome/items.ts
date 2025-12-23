@@ -1,9 +1,9 @@
 import 'server-only'
 
-import { AwesomeItem, AwesomeTag, Prisma } from '@prisma/client'
-
+import { deleteZod, resortZod } from '@/app/zod/common'
 import { prisma } from '@/lib/prisma'
 import { loginProcedure, publicProcedure, router } from '@/lib/trpc'
+import { AwesomeItem, AwesomeTag, Prisma } from '@/prisma/client'
 
 export interface AwesomeItemResult extends AwesomeItem {
   tags?: AwesomeTag[]
@@ -87,33 +87,27 @@ export const items = router({
       })
     }),
 
-  delete: loginProcedure
-    .input(t => t as AwesomeItem)
-    .mutation(async ({ input }) => {
-      const item = await prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } })
+  delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
+    const item = await prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } })
 
-      await Promise.all([
-        prisma.awesomeItem.delete({ where: { id: item.id } }),
-        prisma.awesomeItem.updateMany({
-          where: { catelogId: item.catelogId, index: { gt: item.index! } },
-          data: { index: { decrement: 1 } },
-        }),
-      ])
-    }),
+    await Promise.all([
+      prisma.awesomeItem.delete({ where: { id: item.id } }),
+      prisma.awesomeItem.updateMany({
+        where: { catelogId: item.catelogId, index: { gt: item.index! } },
+        data: { index: { decrement: 1 } },
+      }),
+    ])
+  }),
 
-  resort: loginProcedure
-    .input(t => t as { id: string; index: number }[])
-    .mutation(async ({ input }) => {
-      const caseSql = Prisma.join(
-        input.map(item => Prisma.sql`WHEN ${item.id} THEN ${item.index}`),
-        ' '
-      )
-      await prisma.$executeRaw`
-        UPDATE "awesome_item"
-        SET "index" = (CASE "id"
-          ${caseSql}
-        END)
-        WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
-      `
-    }),
+  resort: loginProcedure.input(resortZod).mutation(async ({ input }) => {
+    const caseSql = Prisma.join(
+      input.map(item => Prisma.sql`WHEN ${item.id} THEN ${item.index}`),
+      ' '
+    )
+    await prisma.$executeRaw`
+      UPDATE "awesome_item"
+      SET "index" = (CASE "id" ${caseSql} END)::integer
+      WHERE "id" IN (${Prisma.join(input.map(item => item.id))})
+    `
+  }),
 })

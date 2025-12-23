@@ -4,11 +4,11 @@ import { DndContext, DragEndEvent, DragOverlay } from '@dnd-kit/core'
 import { restrictToParentElement } from '@dnd-kit/modifiers'
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Button, ButtonProps, Drawer, ElementProps, Group, ScrollArea } from '@mantine/core'
-import { AwesomeTag } from '@prisma/client'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useId, useState } from 'react'
 
 import { useTRPC } from '@/lib/trpc-client'
+import { AwesomeTag } from '@/prisma/client'
 
 import { useAwesome } from '../state'
 import TagEditButton from './TagEditButton'

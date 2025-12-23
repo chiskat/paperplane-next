@@ -10,6 +10,8 @@ interface UseAwesome {
 
   search: string
   setSearch(search: string): void
+
+  reset(): void
 }
 
 export const useAwesome = create<UseAwesome>()(set => ({
@@ -21,6 +23,8 @@ export const useAwesome = create<UseAwesome>()(set => ({
 
   search: '',
   setSearch: (search: string) => void set({ search }),
+
+  reset: () => void set({ edit: false, catelogExpand: false, search: '' }),
 }))
 
 export const awesomeScrollIntoViewEmitter = mitt<{ selectId: string }>()

@@ -3,7 +3,7 @@
 import { Button, Grid, GridCol, Group, SegmentedControl, Stack, TextInput } from '@mantine/core'
 import { useDebouncedCallback } from '@mantine/hooks'
 import { IconListTree, IconMenu2, IconSearch } from '@tabler/icons-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { useLoginUser } from '@/lib/auth-client'
@@ -28,7 +28,7 @@ const foldTogglerData = [
 
 export default function AwesomePage() {
   const [searchText, setSearchText] = useState('')
-  const { edit, catelogExpand, setEdit, setSearch, setCatelogExpand } = useAwesome()
+  const { edit, catelogExpand, setEdit, setSearch, setCatelogExpand, reset } = useAwesome()
   const { data: user } = useLoginUser()
 
   const debouncedSetSearch = useDebouncedCallback(setSearch, 200)
@@ -36,6 +36,8 @@ export default function AwesomePage() {
     setSearchText(input)
     debouncedSetSearch(input)
   }
+
+  useEffect(() => void reset(), [reset, user])
 
   return (
     <Stack pos="relative">
