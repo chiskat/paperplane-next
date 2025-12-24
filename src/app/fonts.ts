@@ -2,7 +2,6 @@ import localFont from 'next/font/local'
 
 export const fontFZYanSong = localFont({
   src: '../fonts/fz-yansong/fz-yansong-zhun.woff2',
-  weight: 'normal',
   display: 'swap',
   variable: '--font-fzyansong',
 })
