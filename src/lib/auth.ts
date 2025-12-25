@@ -9,7 +9,6 @@ import { prisma } from '@/lib/prisma'
 import { redis } from '@/lib/redis'
 
 export const auth = betterAuth({
-  appName: 'PaperPlane Next',
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   basePath: '/api/auth',
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
@@ -34,7 +33,7 @@ export const auth = betterAuth({
     genericOAuth({
       config: [
         {
-          providerId: 'paperplane_next_oa2',
+          providerId: 'gitea',
           clientId: process.env.OA2_CLIENT_ID!,
           clientSecret: process.env.OA2_CLIENT_SECRET,
           discoveryUrl: process.env.OA2_DISCOVERY_URL,

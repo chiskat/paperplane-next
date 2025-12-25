@@ -23,7 +23,7 @@ export default function LoginButton(props: LoginButtonProps) {
       onClick={() => {
         setLoading(true)
         authClient.signIn
-          .oauth2({ providerId: 'paperplane_next_oa2', callbackURL: pathname })
+          .oauth2({ providerId: 'gitea', callbackURL: pathname })
           .then(() => {
             loginSuccess?.()
           })
