@@ -19,7 +19,7 @@
     "db:deploy": "dotenv -c production -- prisma migrate deploy",
     "db:reset": "dotenv -c development -- prisma migrate reset",
     "auth:gen": "pnpm auth:generate",
-    "auth:generate": "npx @better-auth/cli generate && npx prettier --write ./prisma/schema.prisma"
+    "auth:generate": "dotenv -c development -- npx @better-auth/cli generate && npx prettier --write ./prisma/schema.prisma"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.876.0",
