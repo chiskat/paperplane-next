@@ -38,6 +38,7 @@ export const auth = betterAuth({
           clientSecret: process.env.OA2_CLIENT_SECRET,
           discoveryUrl: process.env.OA2_DISCOVERY_URL,
           scopes: ['user:email'],
+          mapProfileToUser: async profile => ({ ...profile, name: profile.name || profile.email }),
         },
       ],
     }),
