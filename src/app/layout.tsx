@@ -23,7 +23,7 @@ import '@/styles/app.css'
 z.config(zhCN())
 
 export const metadata: Metadata = {
-  title: 'PaperPlane 🌠 Alphabet',
+  title: 'PaperPlane 🌠',
   description: '',
 }
 
