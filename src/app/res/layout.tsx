@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
 
-export default function ResourceLayout(props: { children: ReactNode }) {
+export default function ResLayout(props: { children: ReactNode }) {
   return <div>{props.children}</div>
 }
