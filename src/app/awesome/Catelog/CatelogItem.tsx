@@ -12,7 +12,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { Group, Stack, Text } from '@mantine/core'
 import { useMounted } from '@mantine/hooks'
 import { notifications } from '@mantine/notifications'
-import { IconGripVertical, IconSquareRotatedFilled } from '@tabler/icons-react'
+import { IconGripVertical, IconPointFilled, IconSquareRotatedFilled } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CSSProperties, useId, useState } from 'react'
@@ -111,6 +111,8 @@ export default function CatelogItem(props: CatelogItemProps & DraggableWrapperPr
       <Group gap={4}>
         {edit ? (
           <IconGripVertical size="1em" className="raw cursor-move text-gray-400" {...listeners} />
+        ) : parent ? (
+          <IconPointFilled size="0.5em" className="raw ml-1 cursor-default text-gray-300" />
         ) : (
           <IconSquareRotatedFilled size="0.5em" className="raw mr-1 cursor-default text-gray-400" />
         )}
