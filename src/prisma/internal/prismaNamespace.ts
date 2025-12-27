@@ -375,13 +375,13 @@ export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>
 type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>
 
 export const ModelName = {
+  AwesomeCatelog: 'AwesomeCatelog',
+  AwesomeTag: 'AwesomeTag',
+  AwesomeItem: 'AwesomeItem',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  AwesomeCatelog: 'AwesomeCatelog',
-  AwesomeTag: 'AwesomeTag',
-  AwesomeItem: 'AwesomeItem',
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,16 +403,240 @@ export type TypeMap<
   }
   meta: {
     modelProps:
+      | 'awesomeCatelog'
+      | 'awesomeTag'
+      | 'awesomeItem'
       | 'user'
       | 'session'
       | 'account'
       | 'verification'
-      | 'awesomeCatelog'
-      | 'awesomeTag'
-      | 'awesomeItem'
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    AwesomeCatelog: {
+      payload: Prisma.$AwesomeCatelogPayload<ExtArgs>
+      fields: Prisma.AwesomeCatelogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AwesomeCatelogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AwesomeCatelogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        findFirst: {
+          args: Prisma.AwesomeCatelogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AwesomeCatelogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        findMany: {
+          args: Prisma.AwesomeCatelogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
+        }
+        create: {
+          args: Prisma.AwesomeCatelogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        createMany: {
+          args: Prisma.AwesomeCatelogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AwesomeCatelogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
+        }
+        delete: {
+          args: Prisma.AwesomeCatelogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        update: {
+          args: Prisma.AwesomeCatelogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        deleteMany: {
+          args: Prisma.AwesomeCatelogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AwesomeCatelogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AwesomeCatelogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
+        }
+        upsert: {
+          args: Prisma.AwesomeCatelogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
+        }
+        aggregate: {
+          args: Prisma.AwesomeCatelogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeCatelog>
+        }
+        groupBy: {
+          args: Prisma.AwesomeCatelogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AwesomeCatelogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AwesomeCatelogCountArgs<ExtArgs>
+          result:
+            | runtime.Types.Utils.Optional<Prisma.AwesomeCatelogCountAggregateOutputType>
+            | number
+        }
+      }
+    }
+    AwesomeTag: {
+      payload: Prisma.$AwesomeTagPayload<ExtArgs>
+      fields: Prisma.AwesomeTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AwesomeTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AwesomeTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        findFirst: {
+          args: Prisma.AwesomeTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AwesomeTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        findMany: {
+          args: Prisma.AwesomeTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
+        }
+        create: {
+          args: Prisma.AwesomeTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        createMany: {
+          args: Prisma.AwesomeTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AwesomeTagCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
+        }
+        delete: {
+          args: Prisma.AwesomeTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        update: {
+          args: Prisma.AwesomeTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.AwesomeTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AwesomeTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AwesomeTagUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
+        }
+        upsert: {
+          args: Prisma.AwesomeTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
+        }
+        aggregate: {
+          args: Prisma.AwesomeTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeTag>
+        }
+        groupBy: {
+          args: Prisma.AwesomeTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AwesomeTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AwesomeTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AwesomeTagCountAggregateOutputType> | number
+        }
+      }
+    }
+    AwesomeItem: {
+      payload: Prisma.$AwesomeItemPayload<ExtArgs>
+      fields: Prisma.AwesomeItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AwesomeItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AwesomeItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        findFirst: {
+          args: Prisma.AwesomeItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AwesomeItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        findMany: {
+          args: Prisma.AwesomeItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
+        }
+        create: {
+          args: Prisma.AwesomeItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        createMany: {
+          args: Prisma.AwesomeItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AwesomeItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
+        }
+        delete: {
+          args: Prisma.AwesomeItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        update: {
+          args: Prisma.AwesomeItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.AwesomeItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AwesomeItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AwesomeItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.AwesomeItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
+        }
+        aggregate: {
+          args: Prisma.AwesomeItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeItem>
+        }
+        groupBy: {
+          args: Prisma.AwesomeItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AwesomeItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AwesomeItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AwesomeItemCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -709,230 +933,6 @@ export type TypeMap<
         }
       }
     }
-    AwesomeCatelog: {
-      payload: Prisma.$AwesomeCatelogPayload<ExtArgs>
-      fields: Prisma.AwesomeCatelogFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.AwesomeCatelogFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.AwesomeCatelogFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        findFirst: {
-          args: Prisma.AwesomeCatelogFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.AwesomeCatelogFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        findMany: {
-          args: Prisma.AwesomeCatelogFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
-        }
-        create: {
-          args: Prisma.AwesomeCatelogCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        createMany: {
-          args: Prisma.AwesomeCatelogCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.AwesomeCatelogCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
-        }
-        delete: {
-          args: Prisma.AwesomeCatelogDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        update: {
-          args: Prisma.AwesomeCatelogUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        deleteMany: {
-          args: Prisma.AwesomeCatelogDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.AwesomeCatelogUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.AwesomeCatelogUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>[]
-        }
-        upsert: {
-          args: Prisma.AwesomeCatelogUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeCatelogPayload>
-        }
-        aggregate: {
-          args: Prisma.AwesomeCatelogAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeCatelog>
-        }
-        groupBy: {
-          args: Prisma.AwesomeCatelogGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AwesomeCatelogGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.AwesomeCatelogCountArgs<ExtArgs>
-          result:
-            | runtime.Types.Utils.Optional<Prisma.AwesomeCatelogCountAggregateOutputType>
-            | number
-        }
-      }
-    }
-    AwesomeTag: {
-      payload: Prisma.$AwesomeTagPayload<ExtArgs>
-      fields: Prisma.AwesomeTagFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.AwesomeTagFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.AwesomeTagFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        findFirst: {
-          args: Prisma.AwesomeTagFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.AwesomeTagFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        findMany: {
-          args: Prisma.AwesomeTagFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
-        }
-        create: {
-          args: Prisma.AwesomeTagCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        createMany: {
-          args: Prisma.AwesomeTagCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.AwesomeTagCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
-        }
-        delete: {
-          args: Prisma.AwesomeTagDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        update: {
-          args: Prisma.AwesomeTagUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        deleteMany: {
-          args: Prisma.AwesomeTagDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.AwesomeTagUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.AwesomeTagUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>[]
-        }
-        upsert: {
-          args: Prisma.AwesomeTagUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeTagPayload>
-        }
-        aggregate: {
-          args: Prisma.AwesomeTagAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeTag>
-        }
-        groupBy: {
-          args: Prisma.AwesomeTagGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AwesomeTagGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.AwesomeTagCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AwesomeTagCountAggregateOutputType> | number
-        }
-      }
-    }
-    AwesomeItem: {
-      payload: Prisma.$AwesomeItemPayload<ExtArgs>
-      fields: Prisma.AwesomeItemFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.AwesomeItemFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.AwesomeItemFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        findFirst: {
-          args: Prisma.AwesomeItemFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.AwesomeItemFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        findMany: {
-          args: Prisma.AwesomeItemFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
-        }
-        create: {
-          args: Prisma.AwesomeItemCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        createMany: {
-          args: Prisma.AwesomeItemCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.AwesomeItemCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
-        }
-        delete: {
-          args: Prisma.AwesomeItemDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        update: {
-          args: Prisma.AwesomeItemUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        deleteMany: {
-          args: Prisma.AwesomeItemDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.AwesomeItemUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.AwesomeItemUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>[]
-        }
-        upsert: {
-          args: Prisma.AwesomeItemUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AwesomeItemPayload>
-        }
-        aggregate: {
-          args: Prisma.AwesomeItemAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAwesomeItem>
-        }
-        groupBy: {
-          args: Prisma.AwesomeItemGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AwesomeItemGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.AwesomeItemCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AwesomeItemCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -971,6 +971,50 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+export const AwesomeCatelogScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  name: 'name',
+  desc: 'desc',
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeCatelogScalarFieldEnum =
+  (typeof AwesomeCatelogScalarFieldEnum)[keyof typeof AwesomeCatelogScalarFieldEnum]
+
+export const AwesomeTagScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  label: 'label',
+  desc: 'desc',
+  color: 'color',
+  icon: 'icon',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeTagScalarFieldEnum =
+  (typeof AwesomeTagScalarFieldEnum)[keyof typeof AwesomeTagScalarFieldEnum]
+
+export const AwesomeItemScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  label: 'label',
+  homepage: 'homepage',
+  source: 'source',
+  registry: 'registry',
+  desc: 'desc',
+  stars: 'stars',
+  catelogId: 'catelogId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeItemScalarFieldEnum =
+  (typeof AwesomeItemScalarFieldEnum)[keyof typeof AwesomeItemScalarFieldEnum]
 
 export const UserScalarFieldEnum = {
   id: 'id',
@@ -1029,50 +1073,6 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum =
   (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
-export const AwesomeCatelogScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  name: 'name',
-  desc: 'desc',
-  parentId: 'parentId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeCatelogScalarFieldEnum =
-  (typeof AwesomeCatelogScalarFieldEnum)[keyof typeof AwesomeCatelogScalarFieldEnum]
-
-export const AwesomeTagScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  label: 'label',
-  desc: 'desc',
-  color: 'color',
-  icon: 'icon',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeTagScalarFieldEnum =
-  (typeof AwesomeTagScalarFieldEnum)[keyof typeof AwesomeTagScalarFieldEnum]
-
-export const AwesomeItemScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  label: 'label',
-  homepage: 'homepage',
-  source: 'source',
-  registry: 'registry',
-  desc: 'desc',
-  stars: 'stars',
-  catelogId: 'catelogId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeItemScalarFieldEnum =
-  (typeof AwesomeItemScalarFieldEnum)[keyof typeof AwesomeItemScalarFieldEnum]
-
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc',
@@ -1109,9 +1109,14 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
 
 /**
- * Reference to a field of type 'Boolean'
+ * Reference to a field of type 'Int'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
 
 /**
  * Reference to a field of type 'DateTime'
@@ -1124,14 +1129,9 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
 
 /**
- * Reference to a field of type 'Int'
+ * Reference to a field of type 'Boolean'
  */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
 
 /**
  * Reference to a field of type 'Float'
@@ -1246,13 +1246,13 @@ export type PrismaClientOptions = (
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  awesomeCatelog?: Prisma.AwesomeCatelogOmit
+  awesomeTag?: Prisma.AwesomeTagOmit
+  awesomeItem?: Prisma.AwesomeItemOmit
   user?: Prisma.UserOmit
   session?: Prisma.SessionOmit
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
-  awesomeCatelog?: Prisma.AwesomeCatelogOmit
-  awesomeTag?: Prisma.AwesomeTagOmit
-  awesomeItem?: Prisma.AwesomeItemOmit
 }
 
 /* Types for Logging */

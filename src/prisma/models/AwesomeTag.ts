@@ -14,7 +14,7 @@ import type * as Prisma from '../internal/prismaNamespace'
 
 /**
  * Model AwesomeTag
- *
+ * Awesome 的标签
  */
 export type AwesomeTagModel = runtime.Types.Result.DefaultSelection<Prisma.$AwesomeTagPayload>
 

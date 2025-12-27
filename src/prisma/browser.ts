@@ -17,6 +17,21 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums'
 /**
+ * Model AwesomeCatelog
+ * Awesome 类别，存在父子级别
+ */
+export type AwesomeCatelog = Prisma.AwesomeCatelogModel
+/**
+ * Model AwesomeTag
+ * Awesome 的标签
+ */
+export type AwesomeTag = Prisma.AwesomeTagModel
+/**
+ * Model AwesomeItem
+ * Awesome 项
+ */
+export type AwesomeItem = Prisma.AwesomeItemModel
+/**
  * Model User
  * 用户（由 btter-auth 创建）
  */
@@ -36,18 +51,3 @@ export type Account = Prisma.AccountModel
  * 验证（由 btter-auth 创建）
  */
 export type Verification = Prisma.VerificationModel
-/**
- * Model AwesomeCatelog
- *
- */
-export type AwesomeCatelog = Prisma.AwesomeCatelogModel
-/**
- * Model AwesomeTag
- *
- */
-export type AwesomeTag = Prisma.AwesomeTagModel
-/**
- * Model AwesomeItem
- *
- */
-export type AwesomeItem = Prisma.AwesomeItemModel

@@ -28,8 +28,8 @@ export * from './enums'
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more AwesomeCatelogs
+ * const awesomeCatelogs = await prisma.awesomeCatelog.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,6 +42,21 @@ export type PrismaClient<
 > = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model AwesomeCatelog
+ * Awesome 类别，存在父子级别
+ */
+export type AwesomeCatelog = Prisma.AwesomeCatelogModel
+/**
+ * Model AwesomeTag
+ * Awesome 的标签
+ */
+export type AwesomeTag = Prisma.AwesomeTagModel
+/**
+ * Model AwesomeItem
+ * Awesome 项
+ */
+export type AwesomeItem = Prisma.AwesomeItemModel
 /**
  * Model User
  * 用户（由 btter-auth 创建）
@@ -62,18 +77,3 @@ export type Account = Prisma.AccountModel
  * 验证（由 btter-auth 创建）
  */
 export type Verification = Prisma.VerificationModel
-/**
- * Model AwesomeCatelog
- *
- */
-export type AwesomeCatelog = Prisma.AwesomeCatelogModel
-/**
- * Model AwesomeTag
- *
- */
-export type AwesomeTag = Prisma.AwesomeTagModel
-/**
- * Model AwesomeItem
- *
- */
-export type AwesomeItem = Prisma.AwesomeItemModel

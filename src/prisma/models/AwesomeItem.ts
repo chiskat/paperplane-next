@@ -14,7 +14,7 @@ import type * as Prisma from '../internal/prismaNamespace'
 
 /**
  * Model AwesomeItem
- *
+ * Awesome 项
  */
 export type AwesomeItemModel = runtime.Types.Result.DefaultSelection<Prisma.$AwesomeItemPayload>
 

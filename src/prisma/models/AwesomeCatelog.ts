@@ -14,7 +14,7 @@ import type * as Prisma from '../internal/prismaNamespace'
 
 /**
  * Model AwesomeCatelog
- *
+ * Awesome 类别，存在父子级别
  */
 export type AwesomeCatelogModel =
   runtime.Types.Result.DefaultSelection<Prisma.$AwesomeCatelogPayload>
@@ -478,12 +478,24 @@ export type AwesomeCatelogUncheckedCreateNestedManyWithoutParentInput = {
   connect?: Prisma.AwesomeCatelogWhereUniqueInput | Prisma.AwesomeCatelogWhereUniqueInput[]
 }
 
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
 export type NullableIntFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type AwesomeCatelogUpdateOneWithoutChildrenNestedInput = {

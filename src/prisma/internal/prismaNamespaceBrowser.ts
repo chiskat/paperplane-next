@@ -47,13 +47,13 @@ export const JsonNull = runtime.JsonNull
 export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
+  AwesomeCatelog: 'AwesomeCatelog',
+  AwesomeTag: 'AwesomeTag',
+  AwesomeItem: 'AwesomeItem',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  AwesomeCatelog: 'AwesomeCatelog',
-  AwesomeTag: 'AwesomeTag',
-  AwesomeItem: 'AwesomeItem',
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -71,6 +71,50 @@ export const TransactionIsolationLevel = {
 
 export type TransactionIsolationLevel =
   (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+export const AwesomeCatelogScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  name: 'name',
+  desc: 'desc',
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeCatelogScalarFieldEnum =
+  (typeof AwesomeCatelogScalarFieldEnum)[keyof typeof AwesomeCatelogScalarFieldEnum]
+
+export const AwesomeTagScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  label: 'label',
+  desc: 'desc',
+  color: 'color',
+  icon: 'icon',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeTagScalarFieldEnum =
+  (typeof AwesomeTagScalarFieldEnum)[keyof typeof AwesomeTagScalarFieldEnum]
+
+export const AwesomeItemScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  label: 'label',
+  homepage: 'homepage',
+  source: 'source',
+  registry: 'registry',
+  desc: 'desc',
+  stars: 'stars',
+  catelogId: 'catelogId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const
+
+export type AwesomeItemScalarFieldEnum =
+  (typeof AwesomeItemScalarFieldEnum)[keyof typeof AwesomeItemScalarFieldEnum]
 
 export const UserScalarFieldEnum = {
   id: 'id',
@@ -128,50 +172,6 @@ export const VerificationScalarFieldEnum = {
 
 export type VerificationScalarFieldEnum =
   (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
-
-export const AwesomeCatelogScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  name: 'name',
-  desc: 'desc',
-  parentId: 'parentId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeCatelogScalarFieldEnum =
-  (typeof AwesomeCatelogScalarFieldEnum)[keyof typeof AwesomeCatelogScalarFieldEnum]
-
-export const AwesomeTagScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  label: 'label',
-  desc: 'desc',
-  color: 'color',
-  icon: 'icon',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeTagScalarFieldEnum =
-  (typeof AwesomeTagScalarFieldEnum)[keyof typeof AwesomeTagScalarFieldEnum]
-
-export const AwesomeItemScalarFieldEnum = {
-  id: 'id',
-  index: 'index',
-  label: 'label',
-  homepage: 'homepage',
-  source: 'source',
-  registry: 'registry',
-  desc: 'desc',
-  stars: 'stars',
-  catelogId: 'catelogId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-} as const
-
-export type AwesomeItemScalarFieldEnum =
-  (typeof AwesomeItemScalarFieldEnum)[keyof typeof AwesomeItemScalarFieldEnum]
 
 export const SortOrder = {
   asc: 'asc',

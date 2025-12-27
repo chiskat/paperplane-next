@@ -19,7 +19,7 @@ const config: runtime.GetPrismaClientConfig = {
   engineVersion: '0c8ef2ce45c83248ab3df073180d5eda9e8be7a3',
   activeProvider: 'postgresql',
   inlineSchema:
-    'datasource db {\n  provider = "postgresql"\n}\n\ngenerator client {\n  provider = "prisma-client"\n  output   = "../src/prisma"\n}\n\n/// 用户（由 btter-auth 创建）\nmodel User {\n  id            String  @id\n  name          String\n  email         String\n  emailVerified Boolean @map("email_verified")\n  image         String?\n\n  sessions Session[]\n  accounts Account[]\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@unique([email])\n  @@map("user")\n}\n\n/// 会话（由 btter-auth 创建）\nmodel Session {\n  id        String   @id\n  expiresAt DateTime @map("expires_at")\n  token     String\n  ipAddress String?  @map("ip_address")\n  userAgent String?  @map("user_agent")\n\n  userId String @map("user_id")\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@unique([token])\n  @@map("session")\n}\n\n/// 账户（由 btter-auth 创建）\nmodel Account {\n  id                    String    @id\n  accountId             String    @map("account_id")\n  providerId            String    @map("provider_id")\n  accessToken           String?   @map("access_token")\n  refreshToken          String?   @map("refresh_token")\n  idToken               String?   @map("id_token")\n  accessTokenExpiresAt  DateTime? @map("access_token_expires_at")\n  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at")\n  scope                 String?\n  password              String?\n\n  userId String @map("user_id")\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("account")\n}\n\n/// 验证（由 btter-auth 创建）\nmodel Verification {\n  id         String   @id\n  identifier String\n  value      String\n  expiresAt  DateTime @map("expires_at")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("verification")\n}\n\n/// Awesome 类别，存在父子级别\n\nmodel AwesomeCatelog {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  name String\n  desc String?\n\n  parentId String?          @map("parent_id")\n  parent   AwesomeCatelog?  @relation("awesome_catelog_tree", fields: [parentId], references: [id], onDelete: Cascade)\n  children AwesomeCatelog[] @relation("awesome_catelog_tree")\n\n  underAwesomes AwesomeItem[]\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_catelog")\n}\n\n/// Awesome 的标签\n\nmodel AwesomeTag {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  label String\n  desc  String?\n  color String?\n  icon  String?\n\n  underAwesomes AwesomeItem[] @relation("awesome_item_to_awesome_tag")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_tag")\n}\n\n/// Awesome 项\n\nmodel AwesomeItem {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  label    String\n  homepage String\n  source   String?\n  registry String?\n  desc     String?\n  stars    Int?    @default(0)\n\n  catelogId String?         @map("catelog_id")\n  catelog   AwesomeCatelog? @relation(fields: [catelogId], references: [id], onDelete: SetNull)\n\n  tags AwesomeTag[] @relation("awesome_item_to_awesome_tag")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_item")\n}\n',
+    '/// Awesome 类别，存在父子级别\nmodel AwesomeCatelog {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  name String\n  desc String?\n\n  parentId String?          @map("parent_id")\n  parent   AwesomeCatelog?  @relation("awesome_catelog_tree", fields: [parentId], references: [id], onDelete: Cascade)\n  children AwesomeCatelog[] @relation("awesome_catelog_tree")\n\n  underAwesomes AwesomeItem[]\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_catelog")\n}\n\n/// Awesome 的标签\nmodel AwesomeTag {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  label String\n  desc  String?\n  color String?\n  icon  String?\n\n  underAwesomes AwesomeItem[] @relation("awesome_item_to_awesome_tag")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_tag")\n}\n\n/// Awesome 项\nmodel AwesomeItem {\n  id    String @id @default(cuid())\n  index Int?   @default(0)\n\n  label    String\n  homepage String\n  source   String?\n  registry String?\n  desc     String?\n  stars    Int?    @default(0)\n\n  catelogId String?         @map("catelog_id")\n  catelog   AwesomeCatelog? @relation(fields: [catelogId], references: [id], onDelete: SetNull)\n\n  tags AwesomeTag[] @relation("awesome_item_to_awesome_tag")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("awesome_item")\n}\n\ndatasource db {\n  provider = "postgresql"\n}\n\ngenerator client {\n  provider = "prisma-client"\n  output   = "../src/prisma"\n}\n\n/// 用户（由 btter-auth 创建）\nmodel User {\n  id            String  @id\n  name          String\n  email         String\n  emailVerified Boolean @map("email_verified")\n  image         String?\n\n  sessions Session[]\n  accounts Account[]\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@unique([email])\n  @@map("user")\n}\n\n/// 会话（由 btter-auth 创建）\nmodel Session {\n  id        String   @id\n  expiresAt DateTime @map("expires_at")\n  token     String\n  ipAddress String?  @map("ip_address")\n  userAgent String?  @map("user_agent")\n\n  userId String @map("user_id")\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@unique([token])\n  @@map("session")\n}\n\n/// 账户（由 btter-auth 创建）\nmodel Account {\n  id                    String    @id\n  accountId             String    @map("account_id")\n  providerId            String    @map("provider_id")\n  accessToken           String?   @map("access_token")\n  refreshToken          String?   @map("refresh_token")\n  idToken               String?   @map("id_token")\n  accessTokenExpiresAt  DateTime? @map("access_token_expires_at")\n  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at")\n  scope                 String?\n  password              String?\n\n  userId String @map("user_id")\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("account")\n}\n\n/// 验证（由 btter-auth 创建）\nmodel Verification {\n  id         String   @id\n  identifier String\n  value      String\n  expiresAt  DateTime @map("expires_at")\n\n  createdAt DateTime @default(now()) @map("created_at")\n  updatedAt DateTime @updatedAt @map("updated_at")\n\n  @@map("verification")\n}\n',
   runtimeDataModel: {
     models: {},
     enums: {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
 }
 
 config.runtimeDataModel = JSON.parse(
-  '{"models":{"User":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"emailVerified","kind":"scalar","type":"Boolean","dbName":"email_verified"},{"name":"image","kind":"scalar","type":"String"},{"name":"sessions","kind":"object","type":"Session","relationName":"SessionToUser"},{"name":"accounts","kind":"object","type":"Account","relationName":"AccountToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"user"},"Session":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime","dbName":"expires_at"},{"name":"token","kind":"scalar","type":"String"},{"name":"ipAddress","kind":"scalar","type":"String","dbName":"ip_address"},{"name":"userAgent","kind":"scalar","type":"String","dbName":"user_agent"},{"name":"userId","kind":"scalar","type":"String","dbName":"user_id"},{"name":"user","kind":"object","type":"User","relationName":"SessionToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"session"},"Account":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"accountId","kind":"scalar","type":"String","dbName":"account_id"},{"name":"providerId","kind":"scalar","type":"String","dbName":"provider_id"},{"name":"accessToken","kind":"scalar","type":"String","dbName":"access_token"},{"name":"refreshToken","kind":"scalar","type":"String","dbName":"refresh_token"},{"name":"idToken","kind":"scalar","type":"String","dbName":"id_token"},{"name":"accessTokenExpiresAt","kind":"scalar","type":"DateTime","dbName":"access_token_expires_at"},{"name":"refreshTokenExpiresAt","kind":"scalar","type":"DateTime","dbName":"refresh_token_expires_at"},{"name":"scope","kind":"scalar","type":"String"},{"name":"password","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String","dbName":"user_id"},{"name":"user","kind":"object","type":"User","relationName":"AccountToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"account"},"Verification":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"identifier","kind":"scalar","type":"String"},{"name":"value","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime","dbName":"expires_at"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"verification"},"AwesomeCatelog":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"name","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"parentId","kind":"scalar","type":"String","dbName":"parent_id"},{"name":"parent","kind":"object","type":"AwesomeCatelog","relationName":"awesome_catelog_tree"},{"name":"children","kind":"object","type":"AwesomeCatelog","relationName":"awesome_catelog_tree"},{"name":"underAwesomes","kind":"object","type":"AwesomeItem","relationName":"AwesomeCatelogToAwesomeItem"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_catelog"},"AwesomeTag":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"label","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"color","kind":"scalar","type":"String"},{"name":"icon","kind":"scalar","type":"String"},{"name":"underAwesomes","kind":"object","type":"AwesomeItem","relationName":"awesome_item_to_awesome_tag"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_tag"},"AwesomeItem":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"label","kind":"scalar","type":"String"},{"name":"homepage","kind":"scalar","type":"String"},{"name":"source","kind":"scalar","type":"String"},{"name":"registry","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"stars","kind":"scalar","type":"Int"},{"name":"catelogId","kind":"scalar","type":"String","dbName":"catelog_id"},{"name":"catelog","kind":"object","type":"AwesomeCatelog","relationName":"AwesomeCatelogToAwesomeItem"},{"name":"tags","kind":"object","type":"AwesomeTag","relationName":"awesome_item_to_awesome_tag"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_item"}},"enums":{},"types":{}}'
+  '{"models":{"AwesomeCatelog":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"name","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"parentId","kind":"scalar","type":"String","dbName":"parent_id"},{"name":"parent","kind":"object","type":"AwesomeCatelog","relationName":"awesome_catelog_tree"},{"name":"children","kind":"object","type":"AwesomeCatelog","relationName":"awesome_catelog_tree"},{"name":"underAwesomes","kind":"object","type":"AwesomeItem","relationName":"AwesomeCatelogToAwesomeItem"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_catelog"},"AwesomeTag":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"label","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"color","kind":"scalar","type":"String"},{"name":"icon","kind":"scalar","type":"String"},{"name":"underAwesomes","kind":"object","type":"AwesomeItem","relationName":"awesome_item_to_awesome_tag"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_tag"},"AwesomeItem":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"index","kind":"scalar","type":"Int"},{"name":"label","kind":"scalar","type":"String"},{"name":"homepage","kind":"scalar","type":"String"},{"name":"source","kind":"scalar","type":"String"},{"name":"registry","kind":"scalar","type":"String"},{"name":"desc","kind":"scalar","type":"String"},{"name":"stars","kind":"scalar","type":"Int"},{"name":"catelogId","kind":"scalar","type":"String","dbName":"catelog_id"},{"name":"catelog","kind":"object","type":"AwesomeCatelog","relationName":"AwesomeCatelogToAwesomeItem"},{"name":"tags","kind":"object","type":"AwesomeTag","relationName":"awesome_item_to_awesome_tag"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"awesome_item"},"User":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"emailVerified","kind":"scalar","type":"Boolean","dbName":"email_verified"},{"name":"image","kind":"scalar","type":"String"},{"name":"sessions","kind":"object","type":"Session","relationName":"SessionToUser"},{"name":"accounts","kind":"object","type":"Account","relationName":"AccountToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"user"},"Session":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime","dbName":"expires_at"},{"name":"token","kind":"scalar","type":"String"},{"name":"ipAddress","kind":"scalar","type":"String","dbName":"ip_address"},{"name":"userAgent","kind":"scalar","type":"String","dbName":"user_agent"},{"name":"userId","kind":"scalar","type":"String","dbName":"user_id"},{"name":"user","kind":"object","type":"User","relationName":"SessionToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"session"},"Account":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"accountId","kind":"scalar","type":"String","dbName":"account_id"},{"name":"providerId","kind":"scalar","type":"String","dbName":"provider_id"},{"name":"accessToken","kind":"scalar","type":"String","dbName":"access_token"},{"name":"refreshToken","kind":"scalar","type":"String","dbName":"refresh_token"},{"name":"idToken","kind":"scalar","type":"String","dbName":"id_token"},{"name":"accessTokenExpiresAt","kind":"scalar","type":"DateTime","dbName":"access_token_expires_at"},{"name":"refreshTokenExpiresAt","kind":"scalar","type":"DateTime","dbName":"refresh_token_expires_at"},{"name":"scope","kind":"scalar","type":"String"},{"name":"password","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String","dbName":"user_id"},{"name":"user","kind":"object","type":"User","relationName":"AccountToUser"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"account"},"Verification":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"identifier","kind":"scalar","type":"String"},{"name":"value","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime","dbName":"expires_at"},{"name":"createdAt","kind":"scalar","type":"DateTime","dbName":"created_at"},{"name":"updatedAt","kind":"scalar","type":"DateTime","dbName":"updated_at"}],"dbName":"verification"}},"enums":{},"types":{}}'
 )
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
@@ -63,8 +63,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more AwesomeCatelogs
+   * const awesomeCatelogs = await prisma.awesomeCatelog.findMany()
    * ```
    *
    * Read more in our [docs](https://pris.ly/d/client).
@@ -89,8 +89,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more AwesomeCatelogs
+ * const awesomeCatelogs = await prisma.awesomeCatelog.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -211,6 +211,36 @@ export interface PrismaClient<
   >
 
   /**
+   * `prisma.awesomeCatelog`: Exposes CRUD operations for the **AwesomeCatelog** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more AwesomeCatelogs
+   * const awesomeCatelogs = await prisma.awesomeCatelog.findMany()
+   * ```
+   */
+  get awesomeCatelog(): Prisma.AwesomeCatelogDelegate<ExtArgs, { omit: OmitOpts }>
+
+  /**
+   * `prisma.awesomeTag`: Exposes CRUD operations for the **AwesomeTag** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more AwesomeTags
+   * const awesomeTags = await prisma.awesomeTag.findMany()
+   * ```
+   */
+  get awesomeTag(): Prisma.AwesomeTagDelegate<ExtArgs, { omit: OmitOpts }>
+
+  /**
+   * `prisma.awesomeItem`: Exposes CRUD operations for the **AwesomeItem** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more AwesomeItems
+   * const awesomeItems = await prisma.awesomeItem.findMany()
+   * ```
+   */
+  get awesomeItem(): Prisma.AwesomeItemDelegate<ExtArgs, { omit: OmitOpts }>
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
    * Example usage:
    * ```ts
@@ -249,36 +279,6 @@ export interface PrismaClient<
    * ```
    */
   get verification(): Prisma.VerificationDelegate<ExtArgs, { omit: OmitOpts }>
-
-  /**
-   * `prisma.awesomeCatelog`: Exposes CRUD operations for the **AwesomeCatelog** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more AwesomeCatelogs
-   * const awesomeCatelogs = await prisma.awesomeCatelog.findMany()
-   * ```
-   */
-  get awesomeCatelog(): Prisma.AwesomeCatelogDelegate<ExtArgs, { omit: OmitOpts }>
-
-  /**
-   * `prisma.awesomeTag`: Exposes CRUD operations for the **AwesomeTag** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more AwesomeTags
-   * const awesomeTags = await prisma.awesomeTag.findMany()
-   * ```
-   */
-  get awesomeTag(): Prisma.AwesomeTagDelegate<ExtArgs, { omit: OmitOpts }>
-
-  /**
-   * `prisma.awesomeItem`: Exposes CRUD operations for the **AwesomeItem** model.
-   * Example usage:
-   * ```ts
-   * // Fetch zero or more AwesomeItems
-   * const awesomeItems = await prisma.awesomeItem.findMany()
-   * ```
-   */
-  get awesomeItem(): Prisma.AwesomeItemDelegate<ExtArgs, { omit: OmitOpts }>
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {
