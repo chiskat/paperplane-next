@@ -1,0 +1,70 @@
+CRA 默认不读取用户的 `.babelrc`，但可以通过 `customize-cra` 的相关函数来使 Babel 配置生效。
+
+配置如下：
+
+```js
+const { override, useBabelRc } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    useBabelRc()
+    // ... 其它配置
+  ),
+}
+```
+
+使用 `useBabelRc()` 函数即可。
+
+# 快速配置 `babel-plugin-import` 插件
+
+使用 `fixBabelImports()` 可以快速配置 `babel-plugin-import` 插件，记得提前安装它。
+
+对于 antd v4 的项目配置样式的按需引入：
+
+```js
+const { override, fixBabelImports } = require('customize-cra')
+
+module.exports = {
+  webpack: override(fixBabelImports('import', { libraryName: 'antd', style: true })),
+}
+```
+
+对于 mui 项目，配置样式的按需引入：
+
+```js
+const { override, fixBabelImports } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    fixBabelImports('mui-core', {
+      libraryName: '@mui/material',
+      libraryDirectory: '',
+      camel2DashComponentName: false,
+    }),
+
+    fixBabelImports('mui-icons', {
+      libraryName: '@mui/icons-material',
+      libraryDirectory: '',
+      camel2DashComponentName: false,
+    })
+  ),
+}
+```
+
+# 添加其它任何 Babel 插件
+
+使用 `addBabelPlugins()` 可以快速添加 babel 插件。下面是示例：
+
+```js
+const { override, addBabelPlugins } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    // 已安装 @emotion/babel-plugin
+    addBabelPlugins(['@emotion']),
+
+    // 已安装 lodash-babel-plugin
+    addBabelPlugin(['lodash'])
+  ),
+}
+```

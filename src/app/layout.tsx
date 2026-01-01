@@ -11,7 +11,6 @@ import * as z from 'zod'
 import { zhCN } from 'zod/locales'
 
 import appTheme from '@/app/theme'
-import GlobalLayout from '@/components/layouts/GlobalLayout'
 import { auth } from '@/lib/auth'
 import { getQueryClient } from '@/lib/query-client'
 
@@ -54,9 +53,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <QueryProvider>
           <HydrationBoundary state={dehydrate(queryClient)}>
             <MantineProvider theme={appTheme}>
-              <ModalsProvider>
-                <GlobalLayout>{children}</GlobalLayout>
-              </ModalsProvider>
+              <ModalsProvider>{children}</ModalsProvider>
               <Notifications />
             </MantineProvider>
           </HydrationBoundary>

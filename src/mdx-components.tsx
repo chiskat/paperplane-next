@@ -18,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     blockquote: ({ children, className, style }) => (
       <Blockquote px={18} py={12} className={clsx('text-[0.9em]', className)} style={style}>
-        {children}
+        <Stack gap={16}>{children}</Stack>
       </Blockquote>
     ),
     pre: ({ children, className, style }) => {
@@ -34,23 +34,29 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }
 
       return (
-        <Code className={clsx('mdx__code bg-lb-100 text-[1em]', className)} style={style}>
+        <Code
+          className={clsx(
+            'mdx__code bg-lb-100 text-[1em] [-webkit-text-fill-color:currentColor]',
+            className
+          )}
+          style={style}
+        >
           {children}
         </Code>
       )
     },
     h1: ({ children, className, style }) => (
-      <GradientTitle size="lg" className={className} style={style}>
+      <GradientTitle size="lg" className={clsx(className, 'mt-3')} style={style}>
         {children}
       </GradientTitle>
     ),
     h2: ({ children, className, style }) => (
-      <GradientTitle size="md" className={className} style={style}>
+      <GradientTitle size="md" className={clsx(className, 'mt-3')} style={style}>
         {children}
       </GradientTitle>
     ),
     h3: ({ children, className, style }) => (
-      <GradientTitle size="sm" className={className} style={style}>
+      <GradientTitle size="sm" className={clsx(className, 'mt-3')} style={style}>
         {children}
       </GradientTitle>
     ),

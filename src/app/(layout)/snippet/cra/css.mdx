@@ -1,0 +1,85 @@
+# 开启 Sass 支持
+
+依赖项：
+
+```bash
+npm add -D sass sass-loader
+```
+
+配置如下：
+
+```js
+const { override, addWebpackModuleRule } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    addWebpackModuleRule({
+      test: /\.s[ac]ss$/i,
+      use: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            // 如果需要主题、全局变量文件，请取消下面一行注释
+            // additionalData: '@import "~@/styles/global.scss";',
+          },
+        },
+      ],
+    })
+  ),
+}
+```
+
+# 开启 Less 支持
+
+依赖项：
+
+```bash
+npm add -D less less-loader
+```
+
+配置如下：
+
+```js
+const { override, addWebpackModuleRule } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    addWebpackModuleRule({
+      test: /\.less$/i,
+      use: [
+        'style-loader',
+        'less-loader',
+        {
+          loader: 'less-loader',
+          options: {
+            // 如果需要主题、全局变量文件，请取消下面一行注释
+            // additionalData: '@import "~@/styles/global.less";',
+          },
+        },
+      ],
+    })
+  ),
+}
+```
+
+> 如果是**早期**的 `less-loader` 版本，还可以使用 `addLessLoader()` 这个 API 来快速配置 less：
+>
+> ```js
+> const { override, addLessLoader } = require('customize-cra')
+>
+> module.exports = {
+>   webpack: override(
+>     addLessLoader({
+>       additionalData: '@import "~@/styles/global.less";',
+>       lessOptions: {
+>         globalVars: {},
+>         modifyVars: {},
+>       },
+>     })
+>   ),
+> }
+> ```
+>
+> **注意，这个 API 内部做了一些配置，和近期版本的 less-loader 不兼容，新版本已经无法使用了，因此不推荐这个 API。**

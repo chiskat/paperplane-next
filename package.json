@@ -8,7 +8,7 @@
     "start": "next start",
     "start:prod": "dotenv -e .env.production.local -e .env.production -- node ./.next/standalone/server.js",
     "theme": "npx tailwind-preset-mantine ./src/app/theme.ts -o ./src/styles/theme.css && npx prettier --write ./src/styles/theme.css",
-    "lint": "next lint",
+    "lint": "eslint \"src/**/*.{ts,tsx,css}\"",
     "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/schema.prisma\"",
     "check-types": "tsc --noEmit",
     "db:gen": "pnpm db:generate",

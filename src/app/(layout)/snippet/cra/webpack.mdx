@@ -1,0 +1,96 @@
+# 添加 Webpack 路径别名
+
+可以使用 `addWebpackAlias()` 来快速添加 webpack 的别名：
+
+```js
+const { override, addWebpackAlias } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    addWebpackAlias({
+      '@': 'src/',
+    })
+  ),
+}
+```
+
+# 添加 Webpack 外部依赖
+
+配置如下：
+
+```js
+const { override, addWebpackExternals } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    addWebpackExternals({
+      jQuery: '$',
+    })
+  ),
+}
+```
+
+# 配置 Webpack 开发服务器
+
+配置如下：
+
+```js
+const { override, overrideDevServer } = require('customize-cra')
+
+module.exports = {
+  webpack: override(/* 其他配置 */),
+
+  devServer: overrideDevServer(devServerConfig => ({
+    ...devServerConfig,
+    proxy: {
+      '/api': {
+        target: 'https://localhost:1234',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '',
+        },
+      },
+    },
+  })),
+}
+```
+
+# 添加 Webpack 插件
+
+配置如下：
+
+```js
+const { override, addWebpackPlugin } = require('customize-cra')
+
+module.exports = {
+  webpack: override(
+    addWebpackPlugin(/* 插件 new 在这里 */),
+    addWebpackPlugin(/* 插件 new 在这里 */),
+    addWebpackPlugin(/* 插件 new 在这里 */)
+
+    // ...
+  ),
+}
+```
+
+这里给出一个示例：
+
+```js
+const { override, addWebpackPlugin } = require('customize-cra')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+
+module.exports = {
+  webpack: override(
+    // 把 antd 中的 moment.js 替换成 day.js
+    addWebpackPlugin(new AntdDayjsWebpackPlugin()),
+
+    // 拷贝文件
+    addWebpackPlugin(
+      new CopyPlugin({
+        patterns: [{ from: 'other', to: 'public' }],
+      })
+    )
+  ),
+}
+```

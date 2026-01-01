@@ -1,0 +1,33 @@
+对于 `create-react-app` 创建的项目，它默认不会读取 `.babelrc` 配置文件，而是使用自己内部的一套配置。
+
+如果想在 cra 项目中使用自己的 `.babelrc`，建议用 `react-app-rewired` 并配合 `customize-cra` 的 `useBabelRc()` 方法，这样才能读取配置文件。
+
+依赖项：
+
+```bash
+npm add -D react-app-rewired customize-cra
+```
+
+修改 `package.json`：
+
+```json
+{
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+创建 `config-overrides.js` 配置文件：
+
+```js
+const { override, useBabelRc } = require('customize-cra')
+
+module.exports = {
+  webpack: override(useBabelRc()),
+}
+```
+
+这样即可使用 `.babelrc` 配置文件。
