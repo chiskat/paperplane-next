@@ -16,7 +16,7 @@ importers:
         version: 3.876.0
       '@daveyplate/better-auth-tanstack':
         specifier: ^1.3.6
-        version: 1.3.6(e2c8288664a3dd814a02677695c1bd7a)
+        version: 1.3.6(0a9595d4f57a0a5ddc1d0fb0ba565feb)
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -66,8 +66,8 @@ importers:
         specifier: ^3.34.1
         version: 3.34.1(react@19.2.3)
       '@tanstack/react-query':
-        specifier: ^5.85.3
-        version: 5.85.3(react@19.2.3)
+        specifier: ^5.90.16
+        version: 5.90.16(react@19.2.3)
       '@trpc/client':
         specifier: ^11.8.1
         version: 11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2)
@@ -76,7 +76,7 @@ importers:
         version: 11.8.1(typescript@5.9.2)
       '@trpc/tanstack-react-query':
         specifier: ^11.8.1
-        version: 11.8.1(@tanstack/react-query@5.85.3(react@19.2.3))(@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.8.1(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)
+        version: 11.8.1(@tanstack/react-query@5.90.16(react@19.2.3))(@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.8.1(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)
       better-auth:
         specifier: ^1.4.9
         version: 1.4.9(@prisma/client@7.2.0(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(typescript@5.9.2))(better-sqlite3@12.5.0)(drizzle-orm@0.33.0(@electric-sql/pglite@0.3.2)(@prisma/client@5.22.0(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)))(@types/better-sqlite3@7.6.13)(@types/pg@8.16.0)(@types/react@18.3.23)(better-sqlite3@12.5.0)(kysely@0.28.5)(mysql2@3.15.3)(pg@8.16.3)(postgres@3.4.7)(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(react@19.2.3))(mysql2@3.15.3)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.89.2))(pg@8.16.3)(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -1934,11 +1934,11 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
-  '@tanstack/query-core@5.85.3':
-    resolution: {integrity: sha512-9Ne4USX83nHmRuEYs78LW+3lFEEO2hBDHu7mrdIgAFx5Zcrs7ker3n/i8p4kf6OgKExmaDN5oR0efRD7i2J0DQ==}
+  '@tanstack/query-core@5.90.16':
+    resolution: {integrity: sha512-MvtWckSVufs/ja463/K4PyJeqT+HMlJWtw6PrCpywznd2NSgO3m4KwO9RqbFqGg6iDE8vVMFWMeQI4Io3eEYww==}
 
-  '@tanstack/react-query@5.85.3':
-    resolution: {integrity: sha512-AqU8TvNh5GVIE8I+TUU0noryBRy7gOY0XhSayVXmOPll4UkZeLWKDwi0rtWOZbwLRCbyxorfJ5DIjDqE7GXpcQ==}
+  '@tanstack/react-query@5.90.16':
+    resolution: {integrity: sha512-bpMGOmV4OPmif7TNMteU/Ehf/hoC0Kf98PDc0F4BZkFrEapRMEqI/V6YS0lyzwSV6PQpY1y4xxArUIfBW5LVxQ==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -6629,10 +6629,10 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.5.0
 
-  '@daveyplate/better-auth-tanstack@1.3.6(e2c8288664a3dd814a02677695c1bd7a)':
+  '@daveyplate/better-auth-tanstack@1.3.6(0a9595d4f57a0a5ddc1d0fb0ba565feb)':
     dependencies:
-      '@tanstack/query-core': 5.85.3
-      '@tanstack/react-query': 5.85.3(react@19.2.3)
+      '@tanstack/query-core': 5.90.16
+      '@tanstack/react-query': 5.90.16(react@19.2.3)
       better-auth: 1.4.9(@prisma/client@7.2.0(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(typescript@5.9.2))(better-sqlite3@12.5.0)(drizzle-orm@0.33.0(@electric-sql/pglite@0.3.2)(@prisma/client@5.22.0(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)))(@types/better-sqlite3@7.6.13)(@types/pg@8.16.0)(@types/react@18.3.23)(better-sqlite3@12.5.0)(kysely@0.28.5)(mysql2@3.15.3)(pg@8.16.3)(postgres@3.4.7)(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(react@19.2.3))(mysql2@3.15.3)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.89.2))(pg@8.16.3)(prisma@7.2.0(@types/react@18.3.23)(better-sqlite3@12.5.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -7834,11 +7834,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@tanstack/query-core@5.85.3': {}
+  '@tanstack/query-core@5.90.16': {}
 
-  '@tanstack/react-query@5.85.3(react@19.2.3)':
+  '@tanstack/react-query@5.90.16(react@19.2.3)':
     dependencies:
-      '@tanstack/query-core': 5.85.3
+      '@tanstack/query-core': 5.90.16
       react: 19.2.3
 
   '@tootallnate/once@1.1.2': {}
@@ -7864,9 +7864,9 @@ snapshots:
     dependencies:
       typescript: 5.9.2
 
-  '@trpc/tanstack-react-query@11.8.1(@tanstack/react-query@5.85.3(react@19.2.3))(@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.8.1(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)':
+  '@trpc/tanstack-react-query@11.8.1(@tanstack/react-query@5.90.16(react@19.2.3))(@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2))(@trpc/server@11.8.1(typescript@5.9.2))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.2)':
     dependencies:
-      '@tanstack/react-query': 5.85.3(react@19.2.3)
+      '@tanstack/react-query': 5.90.16(react@19.2.3)
       '@trpc/client': 11.8.1(@trpc/server@11.8.1(typescript@5.9.2))(typescript@5.9.2)
       '@trpc/server': 11.8.1(typescript@5.9.2)
       react: 19.2.3
