@@ -1,18 +1,13 @@
-import { prefetchSession } from '@daveyplate/better-auth-tanstack/server'
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
-import { headers } from 'next/headers'
 import { ReactNode } from 'react'
 import * as z from 'zod'
 import { zhCN } from 'zod/locales'
 
 import appTheme from '@/app/theme'
-import { auth } from '@/lib/auth'
-import { getQueryClient } from '@/lib/query-client'
 
 import { QueryProvider } from './QueryProvider'
 import { fontFZYanSong, fontSourceCodePro, fontSwift } from './fonts'
@@ -27,9 +22,6 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
-  const queryClient = getQueryClient()
-  await prefetchSession(auth, queryClient, { headers: await headers() })
-
   return (
     <html
       lang="zh-CN"
@@ -51,12 +43,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
       <body style={{ marginRight: '0 !important' }}>
         <QueryProvider>
-          <HydrationBoundary state={dehydrate(queryClient)}>
-            <MantineProvider theme={appTheme}>
-              <ModalsProvider>{children}</ModalsProvider>
-              <Notifications />
-            </MantineProvider>
-          </HydrationBoundary>
+          <MantineProvider theme={appTheme}>
+            <ModalsProvider>{children}</ModalsProvider>
+            <Notifications />
+          </MantineProvider>
         </QueryProvider>
       </body>
     </html>

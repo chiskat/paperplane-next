@@ -13,13 +13,14 @@ import {
   Text,
 } from '@mantine/core'
 import clsx from 'clsx'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 import { authClient, useSession } from '@/lib/auth-client'
 
 import LoginButton from './LoginButton'
 
-export default function UserStatus(props: { className?: string }) {
+function UserStatus(props: { className?: string }) {
   const { user, isPending, refetch } = useSession()
 
   const [logoutLoading, setLogoutLoading] = useState(false)
@@ -83,3 +84,5 @@ export default function UserStatus(props: { className?: string }) {
     </HoverCard>
   )
 }
+
+export default dynamic(() => Promise.resolve(UserStatus), { ssr: false })
