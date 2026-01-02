@@ -25,11 +25,5 @@ export default async function SnippetArticlePage(props: {
     return notFound()
   }
 
-  const Article = article.component
-
-  return (
-    <Stack mt={16}>
-      <Article />
-    </Stack>
-  )
+  return <Stack mt={16}>{article.title}</Stack>
 }
