@@ -9,7 +9,7 @@
     "start:prod": "dotenv -e .env.production.local -e .env.production -- node ./.next/standalone/server.js",
     "theme": "npx tailwind-preset-mantine ./src/app/theme.ts -o ./src/styles/theme.css && npx prettier --write ./src/styles/theme.css",
     "lint": "eslint \"src/**/*.{ts,tsx,css}\"",
-    "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/schema.prisma\"",
+    "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/**/*.prisma\"",
     "check-types": "tsc --noEmit",
     "db:gen": "pnpm db:generate",
     "db:generate": "dotenv -c development -- prisma generate && npx prettier --write ./src/prisma/**/*.ts --log-level silent",
@@ -20,7 +20,7 @@
     "db:reset": "dotenv -c development -- prisma migrate reset",
     "db:studio": "dotenv -c development -- prisma studio",
     "auth:gen": "pnpm auth:generate",
-    "auth:generate": "dotenv -c development -- npx @better-auth/cli generate && npx prettier --write ./prisma/schema.prisma"
+    "auth:generate": "dotenv -c development -- npx @better-auth/cli generate"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.876.0",
