@@ -55,7 +55,7 @@ export default function DemosItem(props: DemosItemProps) {
           </KVTableRow>
 
           <KVTableRow labelClassName="align-top" fieldClassName="align-top" label="技术栈">
-            <Group gap={8}>
+            <Group gap={12}>
               {tagList.map(Item => (
                 <Item key={Item.name} />
               ))}
