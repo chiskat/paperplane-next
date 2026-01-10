@@ -4,7 +4,7 @@ import type { MDXComponents } from 'mdx/types'
 
 import GradientTitle from './components/labels/GradientTitle'
 
-export type MDXWrapperProps = StackProps
+export type MDXWrapperProps = Pick<StackProps, 'gap'>
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
