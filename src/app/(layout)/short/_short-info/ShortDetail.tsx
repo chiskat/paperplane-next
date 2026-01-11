@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import { CSSProperties } from 'react'
 
+import { shortURLPrefix } from '@/app/api/_short/items'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
 import { useSession } from '@/lib/auth-client'
@@ -20,9 +21,6 @@ export interface DetailProps {
   className?: string
   style?: CSSProperties
 }
-
-const preferURLPrefix =
-  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
 
 export default function ShortDetail(props: DetailProps) {
   const { short, onDelete, className, style } = props
@@ -67,10 +65,10 @@ export default function ShortDetail(props: DetailProps) {
             component="span"
             inherit
           >
-            {preferURLPrefix + short.key}
+            {shortURLPrefix + short.key}
           </Highlight>
 
-          <CopyButton value={preferURLPrefix + short.key}>
+          <CopyButton value={shortURLPrefix + short.key}>
             {({ copied, copy }) => (
               <Button ml={4} variant="subtle" size="compact-sm" onClick={copy}>
                 {copied ? '已复制' : '复制'}

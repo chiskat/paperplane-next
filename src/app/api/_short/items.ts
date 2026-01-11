@@ -10,9 +10,12 @@ import { Short } from '@/prisma/client'
 import { ShortRedirectType } from '@/prisma/enums'
 import { ShortFindFirstArgs, ShortWhereInput } from '@/prisma/models'
 import { deleteZod, paginationZod } from '@/zod/common'
-import { addShortItemZod, shortItemZod } from '@/zod/short'
+import { addShortItemZod, shortItemReturn, shortItemZod } from '@/zod/short'
 
 import { generateShortKeyByRecord, ShortKeyRecord } from './generateShortKey'
+
+export const shortURLPrefix =
+  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
 
 async function findValidShortItemByKey(key: string, mergeOptions: ShortFindFirstArgs = {}) {
   return await prisma.short.findFirst({
@@ -71,7 +74,7 @@ export const items = router({
   add: loginProcedure
     .meta({ openapi: { method: 'POST', path: '/short', protect: true } })
     .input(addShortItemZod)
-    .output(shortItemZod.extend({ $reuse: z.boolean().optional() }))
+    .output(shortItemReturn)
     .mutation(async ({ input, ctx }) => {
       const session = await ctx.getSession()
       const userId = session!.user.id
@@ -89,9 +92,11 @@ export const items = router({
         })
 
         if (!sameKey) {
-          return await prisma.short.create({
+          const result = await prisma.short.create({
             data: { ...omit(input, ['reuse']), key: input.key, userId },
           })
+
+          return { ...result, $full: shortURLPrefix + result.key, $reuse: false }
         }
 
         if (
@@ -102,7 +107,7 @@ export const items = router({
           sameKey.expiredAt === input.expiredAt &&
           sameKey.public === input.public
         ) {
-          return { ...sameKey, $reuse: true }
+          return { ...sameKey, $full: shortURLPrefix + sameKey.key, $reuse: true }
         }
 
         throw new TRPCError({
@@ -123,7 +128,7 @@ export const items = router({
         })
 
         if (same) {
-          return { ...same, $reuse: true }
+          return { ...same, $full: shortURLPrefix + same.key, $reuse: true }
         }
       }
 
@@ -135,9 +140,11 @@ export const items = router({
         exist = await findValidShortItemByKey(keyRecord.key)
       } while (exist)
 
-      return await prisma.short.create({
+      const result = await prisma.short.create({
         data: { ...omit(input, ['reuse']), key: keyRecord.key, userId },
       })
+
+      return { ...result, $full: shortURLPrefix + result.key, $reuse: false }
     }),
 
   get: publicProcedure

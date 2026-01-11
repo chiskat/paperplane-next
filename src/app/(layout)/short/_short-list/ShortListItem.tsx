@@ -13,15 +13,13 @@ import { trimEnd } from 'lodash-es'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import { shortURLPrefix } from '@/app/api/_short/items'
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 import { Short, ShortRedirectType } from '@/prisma/browser'
 
 export interface ShortListItemProps {
   short: Short
 }
-
-const preferURLPrefix =
-  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
 
 const shortStatusIconProps: IconProps = {
   size: 16,
@@ -33,7 +31,7 @@ export default function ShortListItem(props: ShortListItemProps) {
   const { short } = props
   const router = useRouter()
 
-  const keyURL = new URL(preferURLPrefix + short.key)
+  const keyURL = new URL(shortURLPrefix + short.key)
   const targetURL = new URL(short.url)
 
   const clickHandler = () => {

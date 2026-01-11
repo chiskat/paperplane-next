@@ -20,6 +20,7 @@ import { zod4Resolver } from 'mantine-form-zod-resolver'
 import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
+import { shortURLPrefix } from '@/app/api/_short/items'
 import GradientTitle from '@/components/labels/GradientTitle'
 import Loading from '@/components/layouts/Loading'
 import NeedLoginTips from '@/components/user/NeedLoginTips'
@@ -33,9 +34,6 @@ const redirectTypeOptions = [
   { value: ShortRedirectType.TEMPORARY, label: '临时重定向 (302)' },
   { value: ShortRedirectType.JAVASCRIPT, label: '通过 JavaScript 跳转' },
 ]
-
-const preferURLPrefix =
-  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
 
 export default function ShortForm() {
   const trpc = useTRPC()
@@ -149,7 +147,7 @@ export default function ShortForm() {
             <TextInput
               label="自定义短链接"
               placeholder="输入自定义短链接，可由大小写字母和数字组成"
-              description={`${preferURLPrefix}${current.key || ''}`}
+              description={`${shortURLPrefix}${current.key || ''}`}
               withAsterisk
               key={form.key('key')}
               {...form.getInputProps('key')}

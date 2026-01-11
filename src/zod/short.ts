@@ -19,3 +19,8 @@ export const shortItemZod = z.object({
 export const addShortItemZod = shortItemZod.extend({
   reuse: z.boolean().optional().default(false),
 })
+
+export const shortItemReturn = shortItemZod.extend({
+  $reuse: z.boolean(),
+  $full: z.string(),
+})
