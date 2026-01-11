@@ -7,13 +7,13 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import { CSSProperties } from 'react'
 
-import { shortURLPrefix } from '@/app/api/_short/items'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/lib/trpc-client'
 import { ShortRedirectType } from '@/prisma/browser'
 import { Short, User } from '@/prisma/client'
+import { shortURLPrefix } from '@/zod/short'
 
 export interface DetailProps {
   short: Short & { author?: User }

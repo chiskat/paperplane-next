@@ -20,14 +20,13 @@ import { zod4Resolver } from 'mantine-form-zod-resolver'
 import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
-import { shortURLPrefix } from '@/app/api/_short/items'
 import GradientTitle from '@/components/labels/GradientTitle'
 import Loading from '@/components/layouts/Loading'
 import NeedLoginTips from '@/components/user/NeedLoginTips'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/lib/trpc-client'
 import { Short, ShortRedirectType } from '@/prisma/browser'
-import { addShortItemZod, shortItemZod } from '@/zod/short'
+import { addShortItemZod, shortItemZod, shortURLPrefix } from '@/zod/short'
 
 const redirectTypeOptions = [
   { value: ShortRedirectType.PERMANENTLY, label: '永久重定向 (301)' },

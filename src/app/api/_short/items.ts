@@ -10,12 +10,9 @@ import { Short } from '@/prisma/client'
 import { ShortRedirectType } from '@/prisma/enums'
 import { ShortFindFirstArgs, ShortWhereInput } from '@/prisma/models'
 import { deleteZod, paginationZod } from '@/zod/common'
-import { addShortItemZod, shortItemReturn, shortItemZod } from '@/zod/short'
+import { addShortItemZod, shortItemReturn, shortItemZod, shortURLPrefix } from '@/zod/short'
 
 import { generateShortKeyByRecord, ShortKeyRecord } from './generateShortKey'
-
-export const shortURLPrefix =
-  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
 
 async function findValidShortItemByKey(key: string, mergeOptions: ShortFindFirstArgs = {}) {
   return await prisma.short.findFirst({

@@ -13,9 +13,9 @@ import { trimEnd } from 'lodash-es'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { shortURLPrefix } from '@/app/api/_short/items'
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 import { Short, ShortRedirectType } from '@/prisma/browser'
+import { shortURLPrefix } from '@/zod/short'
 
 export interface ShortListItemProps {
   short: Short

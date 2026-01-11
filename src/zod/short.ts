@@ -2,6 +2,9 @@ import z from 'zod'
 
 import { ShortRedirectType } from '@/prisma/enums'
 
+export const shortURLPrefix =
+  process.env.NEXT_PUBLIC_EXTERNAL_SHORT_URL_PREFIX || `${process.env.NEXT_PUBLIC_BASE_URL}/s/`
+
 export const shortItemZod = z.object({
   id: z.string().optional(),
 
