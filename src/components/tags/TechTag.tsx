@@ -109,12 +109,12 @@ export function QuickReferenceTag() {
   )
 }
 
-export function DifyAITag() {
+export function JoplinTag() {
   return (
     <BaseTechTag
-      title="DifyAI"
-      href="https://dify.ai/"
-      icon={require('@/assets/alphabet-icons/dify.jpg').default}
+      title="Joplin"
+      href="https://joplinapp.org/"
+      icon={require('@/assets/alphabet-icons/joplin.png').default}
     />
   )
 }

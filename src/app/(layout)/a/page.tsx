@@ -2,9 +2,9 @@ import { Group, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import {
-  DifyAITag,
   HexoTag,
   ITToolsTag,
+  JoplinTag,
   MemosTag,
   OpenWebUITag,
   QuickReferenceTag,
@@ -122,12 +122,12 @@ export default function AlphabetPage() {
         />
 
         <AItem
-          title="DifyAI 工作流"
-          icon={require('@/assets/alphabet-icons/dify.jpg').default}
-          href="https://ai.paperplane.cc"
-          hrefHighlight="ai."
-          desc="自部署 AI 工作流，暂不开放"
-          tech={DifyAITag}
+          title="Joplin 同步笔记"
+          icon={require('@/assets/alphabet-icons/joplin.png').default}
+          href="https://joplin.paperplane.cc"
+          hrefHighlight="joplin."
+          desc="自部署 Joplin 笔记"
+          tech={JoplinTag}
         />
       </Stack>
     </Group>
