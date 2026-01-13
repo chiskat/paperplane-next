@@ -109,7 +109,7 @@ function DemosTag(props: { label: string; icon: FC<IconProps>; className?: strin
   const { label, icon: Icon, className } = props
   return (
     <Text
-      className={clsx(className, 'flex pb-1 align-middle')}
+      className={clsx('flex pb-1 align-middle', className)}
       component="span"
       size="sm"
       c="gray.6"

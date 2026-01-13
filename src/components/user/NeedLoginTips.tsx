@@ -17,7 +17,7 @@ export default function NeedLoginTips(props: NeedLoginTipsProps) {
 
   return (
     <Group
-      className={clsx(className, 'cursor-default flex-nowrap rounded-md bg-yellow-200')}
+      className={clsx('cursor-default flex-nowrap rounded-md bg-yellow-200', className)}
       px={16}
       py={12}
       gap={12}

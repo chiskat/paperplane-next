@@ -75,12 +75,12 @@ export default function ListItemGroup(props: ListItemGroupProps) {
   }
 
   if (!edit && list.length <= 0) {
-    return <div className={clsx(className, `awesome__catelog-group__id-${catelog.id}`)}></div>
+    return <div className={clsx(`awesome__catelog-group__id-${catelog.id}`, className)}></div>
   }
 
   return (
     <Stack
-      className={clsx(className, `awesome__catelog-group__id-${catelog.id}`)}
+      className={clsx(`awesome__catelog-group__id-${catelog.id}`, className)}
       pos="relative"
       style={style}
       pr={24}

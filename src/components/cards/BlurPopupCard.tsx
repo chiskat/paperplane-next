@@ -37,7 +37,7 @@ export const BlurPopupCard = forwardRef<any, BlurPopupCardProps>(
         px={px}
         py={py}
         pos="relative"
-        className={clsx(className, 'blur-popup-card')}
+        className={clsx('blur-popup-card', className)}
         style={style}
         ref={ref}
       >

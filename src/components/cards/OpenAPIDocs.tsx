@@ -45,7 +45,7 @@ export default function OpenAPIDocs(props: OpenAPIDocsProps) {
   const [showApiKey, setShowApiKey] = useState(false)
 
   return (
-    <Stack className={clsx(className, '')} style={style}>
+    <Stack className={clsx(className)} style={style}>
       {title ? <GradientTitle>{title}</GradientTitle> : null}
 
       {desc ? <Text className="text-[18px] whitespace-pre-wrap text-[#333]">{desc}</Text> : null}

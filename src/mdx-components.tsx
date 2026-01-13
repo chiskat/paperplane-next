@@ -48,17 +48,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       )
     },
     h1: ({ children, className, style }) => (
-      <GradientTitle size="lg" className={clsx(className, 'mt-3')} style={style}>
+      <GradientTitle size="lg" className={clsx('mt-3', className)} style={style}>
         {children}
       </GradientTitle>
     ),
     h2: ({ children, className, style }) => (
-      <GradientTitle size="md" className={clsx(className, 'mt-3')} style={style}>
+      <GradientTitle size="md" className={clsx('mt-3', className)} style={style}>
         {children}
       </GradientTitle>
     ),
     h3: ({ children, className, style }) => (
-      <GradientTitle size="sm" className={clsx(className, 'mt-3')} style={style}>
+      <GradientTitle size="sm" className={clsx('mt-3', className)} style={style}>
         {children}
       </GradientTitle>
     ),
