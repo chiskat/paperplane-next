@@ -66,6 +66,12 @@
   --color-ma-outline-hover: var(--mantine-color-ma-outline-hover);
 
   /* breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 576px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 880px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1680px;
 
   /* readd back tailwind's default containers vars to fix #24 */
   --size-3xs: 16rem;

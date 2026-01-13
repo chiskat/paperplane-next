@@ -4,7 +4,7 @@ import OpenItem from './OpenItem'
 
 export default async function OpenLayout(props: LayoutProps<'/open'>) {
   return (
-    <Grid gutter={48}>
+    <Grid gutter={{ base: 24, xl: 48 }}>
       <GridCol pos="relative" span={4}>
         <Stack pos="sticky" top={130 + 16} left={0} gap={4}>
           <OpenItem

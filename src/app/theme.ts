@@ -41,6 +41,13 @@ export default createTheme({
       '#a9004f',
     ],
   },
+  breakpoints: {
+    xs: '576px',
+    sm: '768px',
+    md: '880px',
+    lg: '1280px',
+    xl: '1680px',
+  },
   fontFamilyMonospace: `var(--font-source-code), -apple-system, sans-serif`,
   fontSizes: {
     xl: '32px',
