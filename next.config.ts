@@ -24,7 +24,10 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   redirects() {
-    return [{ source: '/alphabet', destination: '/a', statusCode: 302 }]
+    return [
+      { source: '/alphabet', destination: '/a', permanent: false },
+      { source: '/d/:path*', destination: '/s/:path*', permanent: false },
+    ]
   },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
