@@ -18,9 +18,9 @@ trigger:
 
 steps:
   - name: prepare
-    image: chiskat/baseline-node20:2025.11.30
+    image: chiskat/baseline-node20:2026.1.14
     commands:
-      - npx -y docker-deps
+      - pnpm run ci:prepare-docker
 
   - name: build-image
     image: docker:dind

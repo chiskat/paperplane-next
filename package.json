@@ -11,6 +11,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx,css}\"",
     "format": "prettier --list-different \"src/**/*.{ts,tsx,css}\" \"prisma/**/*.prisma\"",
     "check-types": "tsc --noEmit",
+    "ci:prepare-docker": "npx -y docker-deps",
     "db:gen": "pnpm db:generate",
     "db:generate": "dotenv -c development -- prisma generate && npx prettier --write ./src/prisma/**/*.ts --log-level silent",
     "db:mi": "pnpm db:migrate",
