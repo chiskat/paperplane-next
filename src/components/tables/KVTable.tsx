@@ -27,27 +27,29 @@ export function KVTable(props: KVTableProps) {
 export interface KVTableRowProps {
   label: ReactNode
   icon?: ReactNode
-  labelClassName?: string
-  fieldClassName?: string
+  classNames?: {
+    label?: string
+    field?: string
+  }
   children?: ReactNode
   className?: string
 }
 
 export function KVTableRow(props: KVTableRowProps) {
-  const { label, icon, children, labelClassName, fieldClassName, className } = props
+  const { label, icon, children, classNames, className } = props
 
   return (
     <TableTr className={className}>
       <TableTd
         className={clsx(
           'w-0 cursor-default pr-2 leading-[1.6] text-nowrap text-gray-900',
-          labelClassName
+          classNames?.label
         )}
       >
         {icon} {label}：
       </TableTd>
 
-      <TableTd className={clsx('font-sans leading-[1.2] text-gray-600', fieldClassName)}>
+      <TableTd className={clsx('font-sans leading-[1.2] text-gray-600', classNames?.field)}>
         {children}
       </TableTd>
     </TableTr>

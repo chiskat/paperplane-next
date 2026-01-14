@@ -70,8 +70,7 @@ export function DemosDetailTable(props: DemosDetailTableProps) {
         <KVTableRow
           label="技术栈"
           icon={<IconCpu />}
-          labelClassName="align-top"
-          fieldClassName="align-top"
+          classNames={{ label: 'align-top', field: 'align-top' }}
         >
           <Group gap={12} mt={-2}>
             {(Array.isArray(tech) ? tech : [tech]).map(Item => (

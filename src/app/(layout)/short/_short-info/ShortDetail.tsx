@@ -50,7 +50,7 @@ export default function ShortDetail(props: DetailProps) {
   return (
     <Stack className={className} style={style}>
       <KVTable>
-        <KVTableRow label="链接指向" labelClassName="align-top">
+        <KVTableRow label="链接指向" classNames={{ label: 'align-top' }}>
           <Text inherit className="text-ma hover:underline">
             <Link className="break-all" href={short.url} target="_blank">
               {short.url}
@@ -58,7 +58,7 @@ export default function ShortDetail(props: DetailProps) {
           </Text>
         </KVTableRow>
 
-        <KVTableRow label="短链" labelClassName="align-top">
+        <KVTableRow label="短链" classNames={{ label: 'align-top' }}>
           <Highlight
             highlight={short.key}
             highlightStyles={{ padding: '0 4px', margin: '0 3px', borderRadius: '4px' }}
@@ -93,7 +93,7 @@ export default function ShortDetail(props: DetailProps) {
             : `永久有效`}
         </KVTableRow>
 
-        <KVTableRow label="标签" labelClassName="align-top">
+        <KVTableRow label="标签" classNames={{ label: 'align-top' }}>
           {short.tag || '-'}
         </KVTableRow>
 
@@ -109,7 +109,7 @@ export default function ShortDetail(props: DetailProps) {
           <Divider />
 
           <KVTable>
-            <KVTableRow label="创建者" labelClassName="align-top">
+            <KVTableRow label="创建者" classNames={{ label: 'align-top' }}>
               {short.author?.name || short.author?.email}
             </KVTableRow>
 

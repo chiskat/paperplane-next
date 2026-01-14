@@ -37,7 +37,7 @@ export default function DemosItem(props: DemosItemProps) {
     () => (
       <Stack mt={8} gap={8}>
         <KVTable>
-          <KVTableRow label="地址" labelClassName="leading-[1.6]" className="align-top">
+          <KVTableRow label="地址" classNames={{ label: 'leading-[1.6]' }} className="align-top">
             <Link href={href} target="_blank">
               <Highlight
                 component="span"
@@ -54,7 +54,7 @@ export default function DemosItem(props: DemosItemProps) {
             </Link>
           </KVTableRow>
 
-          <KVTableRow labelClassName="align-top" fieldClassName="align-top" label="技术栈">
+          <KVTableRow classNames={{ label: 'align-top', field: 'align-top' }} label="技术栈">
             <Group gap={12}>
               {tagList.map(Item => (
                 <Item key={Item.name} />

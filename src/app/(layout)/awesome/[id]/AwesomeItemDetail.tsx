@@ -18,28 +18,28 @@ export default function AwesomeItemDetail(props: AwesomeItemDetailProps) {
   return (
     <Stack {...restProps} className={clsx('', className)}>
       <KVTable>
-        <KVTableRow label="官网" labelClassName="align-top" fieldClassName="break-words">
+        <KVTableRow label="官网" classNames={{ label: 'align-top', field: 'break-words' }}>
           <Link className="underline" href={awesome.homepage}>
             {awesome.homepage}
           </Link>
         </KVTableRow>
 
-        <KVTableRow label="源代码" labelClassName="align-top" fieldClassName="break-words">
+        <KVTableRow label="源代码" classNames={{ label: 'align-top', field: 'break-words' }}>
           {awesome.source ? <Link href={awesome.source}>{awesome.source}</Link> : '-'}
         </KVTableRow>
 
-        <KVTableRow label="包" labelClassName="align-top" fieldClassName="break-words">
+        <KVTableRow label="包" classNames={{ label: 'align-top', field: 'break-words' }}>
           {awesome.registry ? <Link href={awesome.registry}>{awesome.registry}</Link> : '-'}
         </KVTableRow>
 
-        <KVTableRow label="星级" labelClassName="align-top">
+        <KVTableRow label="星级" classNames={{ label: 'align-top' }}>
           <Rating className="mr-2 inline-flex align-middle" value={awesome.stars || 0} readOnly />
           <Text component="span" className="align-middle" inherit>
             {awesomeStarLevel(awesome.stars || 0)}
           </Text>
         </KVTableRow>
 
-        <KVTableRow label="标签" labelClassName="align-top">
+        <KVTableRow label="标签" classNames={{ label: 'align-top' }}>
           {awesome.tags && awesome.tags.length >= 1
             ? awesome.tags.map(tag => <TagItem className="inline-flex" key={tag.id} tag={tag} />)
             : '-'}
@@ -47,8 +47,7 @@ export default function AwesomeItemDetail(props: AwesomeItemDetailProps) {
 
         <KVTableRow
           label="介绍"
-          labelClassName="align-top"
-          fieldClassName="break-words whitespace-pre-wrap"
+          classNames={{ label: 'align-top', field: 'break-words whitespace-pre-wrap' }}
         >
           {awesome.desc || '-'}
         </KVTableRow>
