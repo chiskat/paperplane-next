@@ -14,7 +14,7 @@ export default function KinyPage() {
       <DemosDetailTable
         href="https://kiny.paperplane.cc"
         hrefHighlight="kiny."
-        repo="jia-niang/kiny-tech"
+        repo="chiskat/kiny-tech"
         tech={[VueTag]}
       />
       <Divider />

@@ -1,4 +1,4 @@
-FROM paperplanecc/baseline-node20:2025.11.30
+FROM chiskat/baseline-node20:2026.1.14
 
 ARG NPM_REGISTRY=https://registry.npmjs.org
 

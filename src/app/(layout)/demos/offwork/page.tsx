@@ -14,7 +14,7 @@ export default function CITechSharePage() {
       <DemosDetailTable
         href="https://offwork.paperplane.cc"
         hrefHighlight="offwork."
-        repo="jia-niang/offwork-time"
+        repo="chiskat/offwork-time"
         tech={[ReactTag, AntDTag]}
       />
       <Divider />

@@ -13,7 +13,7 @@ export default function CITechSharePage() {
       <Divider />
       <DemosDetailTable
         href="https://paperplane.cc"
-        repo="jia-niang/paperplane-blog"
+        repo="chiskat/paperplane-blog"
         tech={[HexoTag, NodejsTag]}
       />
       <Divider />

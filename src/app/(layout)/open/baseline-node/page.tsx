@@ -6,7 +6,7 @@ import { DockerTag, NodejsTag } from '@/components/tags/TechTag'
 import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
-const name = 'paperplanecc/baseline-node'
+const name = 'chiskat/baseline-node'
 const repo = 'paperplane-docker/baseline-node'
 const shieldName = name + '20'
 

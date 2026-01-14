@@ -14,7 +14,7 @@ export default function CITechSharePage() {
       <DemosDetailTable
         href="https://paperplane.cc/a"
         hrefHighlight="/a"
-        repo="jia-niang/paperplane-next"
+        repo="chiskat/paperplane-next"
         tech={[NextjsTag, MantineTag, TRPCTag, PrismaTag, PostgreSQLTag]}
       />
       <Divider />

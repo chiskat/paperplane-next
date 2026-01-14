@@ -14,8 +14,8 @@ export default function CFDAPage() {
       <DemosDetailTable
         href="https://cfda.paperplane.cc"
         hrefHighlight="cfda."
-        repo="jia-niang/cfda-app"
-        backendRepo="jia-niang/cfda-api"
+        repo="chiskat/cfda-app"
+        backendRepo="chiskat/cfda-api"
         tech={[VueTag, ElementTag, RestifyTag, MongoDBTag]}
       />
       <Divider />

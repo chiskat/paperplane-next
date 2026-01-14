@@ -21,7 +21,7 @@ export default function CITechSharePage() {
       <DemosDetailTable
         href="https://console.paperplane.cc"
         hrefHighlight="console."
-        repo="jia-niang/paperplane-web-console"
+        repo="chiskat/paperplane-web-console"
         tech={[ReactTag, TDesignTag, NestjsTag, PrismaTag, PostgreSQLTag, RedisTag]}
       />
       <Divider />

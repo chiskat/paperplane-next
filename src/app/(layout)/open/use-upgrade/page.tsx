@@ -7,7 +7,7 @@ import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
 const name = 'use-upgrade'
-const repo = 'jia-niang/use-upgrade'
+const repo = 'chiskat/use-upgrade'
 
 export default function UseUpgradePage() {
   return (

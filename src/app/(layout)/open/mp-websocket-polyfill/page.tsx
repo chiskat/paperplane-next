@@ -6,7 +6,7 @@ import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
 const name = 'mp-websocket-polyfill'
-const repo = 'jia-niang/mp-websocket-polyfill'
+const repo = 'chiskat/mp-websocket-polyfill'
 
 export default function MpWebSocketPolyfillPage() {
   return (

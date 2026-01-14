@@ -6,7 +6,7 @@ import { DockerTag } from '@/components/tags/TechTag'
 import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
-const name = 'paperplanecc/docker-api'
+const name = 'chiskat/docker-api'
 const repo = 'paperplane-docker/docker-api'
 
 export default function DockerApiPage() {

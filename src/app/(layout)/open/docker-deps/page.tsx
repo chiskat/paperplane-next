@@ -7,7 +7,7 @@ import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
 const name = 'docker-deps'
-const repo = 'jia-niang/docker-deps'
+const repo = 'chiskat/docker-deps'
 
 export default function DockerDepsPage() {
   return (

@@ -44,9 +44,9 @@ export default function AItem(props: AItemProps) {
         {repo ? (
           <KVTableRow label="源码" icon={<IconFileDescription />}>
             <Group gap={16}>
-              <GitHubLink repo={`${repoOrg || 'jia-niang'}/${repo}`} />
-              <GiteaLink repo={`${repoOrg || 'jia-niang'}/${repo}`} />
-              <DroneLink repo={`${repoOrg || 'jia-niang'}/${repo}`} />
+              <GitHubLink repo={`${repoOrg || 'chiskat'}/${repo}`} />
+              <GiteaLink repo={`${repoOrg || 'chiskat'}/${repo}`} />
+              <DroneLink repo={`${repoOrg || 'chiskat'}/${repo}`} />
             </Group>
           </KVTableRow>
         ) : null}

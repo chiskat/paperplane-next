@@ -14,8 +14,8 @@ export default function HospitalPage() {
       <DemosDetailTable
         href="https://hospital.paperplane.cc"
         hrefHighlight="hospital."
-        repo="jia-niang/hospital-app"
-        backendRepo="jia-niang/hospital-api"
+        repo="chiskat/hospital-app"
+        backendRepo="chiskat/hospital-api"
         tech={[ReactTag, MuiTag, RestifyTag, MongoDBTag]}
       />
       <Divider />

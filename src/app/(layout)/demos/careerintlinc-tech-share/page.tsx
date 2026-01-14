@@ -14,7 +14,7 @@ export default function CITechSharePage() {
       <DemosDetailTable
         href="https://careerintlinc-tech-share.paperplane.cc"
         hrefHighlight="careerintlinc-tech-share."
-        repo="jia-niang/careerintlinc-tech-share"
+        repo="chiskat/careerintlinc-tech-share"
         tech={[ReactTag, DumiTag]}
       />
       <Divider />

@@ -18,7 +18,7 @@ trigger:
 
 steps:
   - name: prepare
-    image: paperplanecc/baseline-node20:2025.11.30
+    image: chiskat/baseline-node20:2025.11.30
     commands:
       - npx -y docker-deps
 
@@ -30,7 +30,7 @@ steps:
       - name: envfile
         path: /paperplane-next/.env.production.local
     commands:
-      - docker build --progress plain --compress -t paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8} .
+      - docker build --progress plain --compress -t chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8} .
 
   - name: stop-old-container
     image: docker:dind
@@ -49,8 +49,8 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker tag paperplanecc/paperplane-next:production paperplanecc/paperplane-next:previous-prod
-      - docker rmi paperplanecc/paperplane-next:production
+      - docker tag chiskat/paperplane-next:production chiskat/paperplane-next:previous-prod
+      - docker rmi chiskat/paperplane-next:production
 
   - name: server-prisma-sync-db
     image: appleboy/drone-ssh
@@ -66,7 +66,7 @@ steps:
         - |
           docker run -t --rm --name paperplane-next-prisma --network root_default -e NODE_ENV=production \
           -v ./.env.production.local:/paperplane-next/.env.production.local:ro \
-          paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8} pnpm db:deploy
+          chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8} pnpm db:deploy
 
   - name: deploy
     image: appleboy/drone-ssh
@@ -78,7 +78,7 @@ steps:
         from_secret: DEPLOY_SSH_PRIKEY
       command_timeout: 20m
       script:
-        - docker tag paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8} paperplanecc/paperplane-next:production
+        - docker tag chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8} chiskat/paperplane-next:production
         - cd /root/project-config/paperplane-next
         - docker compose up -d
 
@@ -114,8 +114,8 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker rmi paperplanecc/paperplane-next:previous-prod
-      - docker rmi paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8}
+      - docker rmi chiskat/paperplane-next:previous-prod
+      - docker rmi chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8}
 
   - name: rollback-handle-docker
     image: docker:dind
@@ -128,8 +128,8 @@ steps:
     commands:
       - docker stop paperplane-next || true
       - docker rm paperplane-next || true
-      - docker rmi paperplanecc/paperplane-next:production || true
-      - docker rmi paperplanecc/paperplane-next:${DRONE_COMMIT_SHA:0:8} || true
+      - docker rmi chiskat/paperplane-next:production || true
+      - docker rmi chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8} || true
 
   - name: rollback-handle-ssh
     image: appleboy/drone-ssh
@@ -144,7 +144,7 @@ steps:
         from_secret: DEPLOY_SSH_PRIKEY
       command_timeout: 20m
       script:
-        - docker tag paperplanecc/paperplane-next:previous-prod paperplanecc/paperplane-next:production || true
-        - docker rmi paperplanecc/paperplane-next:previous-prod || true
+        - docker tag chiskat/paperplane-next:previous-prod chiskat/paperplane-next:production || true
+        - docker rmi chiskat/paperplane-next:previous-prod || true
         - cd /root/project-config/paperplane-next
         - docker compose up -d

@@ -44,24 +44,24 @@ export default function AlphabetPage() {
         <AItem
           title="GitHub"
           icon={require('@/assets/alphabet-icons/github.svg').default}
-          href="https://github.com/jia-niang"
-          hrefHighlight="/jia-niang"
+          href="https://github.com/chiskat"
+          hrefHighlight="/chiskat"
           desc="我的 GitHub 主页"
         />
 
         <AItem
           title="npm"
           icon={require('@/assets/alphabet-icons/npm.svg').default}
-          href="https://npmjs.com/~jia-niang"
-          hrefHighlight="/~jia-niang"
+          href="https://npmjs.com/~chiskat"
+          hrefHighlight="/~chiskat"
           desc="我的 npm 主页"
         />
 
         <AItem
           title="Docker Hub"
           icon={require('@/assets/alphabet-icons/docker.svg').default}
-          href="https://hub.docker.com/r/paperplanecc"
-          hrefHighlight="/paperplanecc"
+          href="https://hub.docker.com/r/chiskat"
+          hrefHighlight="/chiskat"
           desc="我的 Docker Hub 主页"
         />
 
