@@ -2,12 +2,11 @@ import 'server-only'
 
 import { prisma } from '@/lib/prisma'
 import { loginProcedure, publicProcedure, router } from '@/lib/trpc'
-import { AwesomeItem, AwesomeTag, Prisma } from '@/prisma/client'
-import { deleteZod, resortZod } from '@/zod/common'
+import { AwesomeItem, Prisma } from '@/prisma/client'
+import { awesomeItemZod } from '@/zod/awesome'
+import { deleteZod, idZod, resortZod } from '@/zod/common'
 
-export interface AwesomeItemResult extends AwesomeItem {
-  tags?: AwesomeTag[]
-}
+export type AwesomeItemResult = Awaited<ReturnType<typeof items.get>>
 
 export const items = router({
   tree: publicProcedure.query(async () => {
@@ -57,35 +56,41 @@ export const items = router({
     return result
   }),
 
-  add: loginProcedure
-    .input(t => t as AwesomeItem & { tags?: string[] })
-    .mutation(async ({ input }) => {
-      const index = await prisma.awesomeItem.count({
-        where: { catelogId: input.catelogId || null },
-      })
+  get: publicProcedure.input(idZod).query(async ({ input }) => {
+    const { id } = input
+    const awesomeItem = await prisma.awesomeItem.findFirstOrThrow({
+      where: { id },
+      include: { catelog: { include: { parent: true } }, tags: true },
+    })
 
-      return prisma.awesomeItem.create({
-        data: { ...input, index, tags: { connect: input.tags?.map(id => ({ id })) } },
-      })
-    }),
+    return awesomeItem
+  }),
 
-  update: loginProcedure
-    .input(t => t as AwesomeItem & { tags?: string[] })
-    .mutation(async ({ input }) => {
-      const [origin, newIndex] = await Promise.all([
-        prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } }),
-        prisma.awesomeItem.count({ where: { catelogId: input.catelogId } }),
-      ])
-      const data = input
-      if (origin.catelogId !== input.catelogId) {
-        data.index = newIndex
-      }
+  add: loginProcedure.input(awesomeItemZod).mutation(async ({ input }) => {
+    const index = await prisma.awesomeItem.count({
+      where: { catelogId: input.catelogId || null },
+    })
 
-      return prisma.awesomeItem.update({
-        where: { id: input.id },
-        data: { ...data, tags: { set: input.tags?.map(id => ({ id })) } },
-      })
-    }),
+    return prisma.awesomeItem.create({
+      data: { ...input, index, tags: { connect: input.tags?.map(id => ({ id })) } },
+    })
+  }),
+
+  update: loginProcedure.input(awesomeItemZod).mutation(async ({ input }) => {
+    const [origin, newIndex] = await Promise.all([
+      prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } }),
+      prisma.awesomeItem.count({ where: { catelogId: input.catelogId } }),
+    ])
+    const data = input as AwesomeItem
+    if (origin.catelogId !== input.catelogId) {
+      data.index = newIndex
+    }
+
+    return prisma.awesomeItem.update({
+      where: { id: input.id },
+      data: { ...data, tags: { set: input.tags?.map(id => ({ id })) } },
+    })
+  }),
 
   delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } })

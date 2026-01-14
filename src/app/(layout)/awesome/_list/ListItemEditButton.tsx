@@ -159,8 +159,8 @@ export default function ListItemEditButton(props: ListItemEditButtonProps) {
             />
 
             <Textarea
-              label="描述"
-              placeholder="输入描述文本，可留空"
+              label="介绍"
+              placeholder="输入介绍文本，可留空"
               classNames={{ input: 'py-1' }}
               key={form.key('desc')}
               {...form.getInputProps('desc')}

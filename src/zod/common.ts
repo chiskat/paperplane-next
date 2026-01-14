@@ -2,9 +2,11 @@ import z, { ZodAny } from 'zod'
 
 import { transformerFormDataInput } from '@/lib/form-data-transformer'
 
+export const idZod = z.object({ id: z.string() })
+
 export const resortZod = z.array(z.object({ id: z.string(), index: z.number() }))
 
-export const deleteZod = z.object({ id: z.string() })
+export const deleteZod = idZod
 
 export const paginationZod = z.object({
   page: z.int().nonnegative().optional().default(1),

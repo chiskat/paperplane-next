@@ -4,6 +4,7 @@ import { Group, Text, Tooltip } from '@mantine/core'
 import { IconGripVertical, IconMichelinStar, IconPointFilled } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
+import Link from 'next/link'
 import { CSSProperties } from 'react'
 
 import { AwesomeItemResult } from '@/app/api/_awesome/items'
@@ -22,6 +23,16 @@ export interface ListItemsProps {
   edit?: boolean
   className?: string
   style?: CSSProperties
+}
+
+export function awesomeStarLevel(stars: number) {
+  return stars >= 5
+    ? `5星 · 不可错过 & 强烈推荐！`
+    : stars >= 4
+      ? `4星 · 推荐尝试！`
+      : stars >= 1
+        ? `${stars}星`
+        : '未分级'
 }
 
 export default function ListItem(props: ListItemsProps & DraggableWrapperProps) {
@@ -44,14 +55,7 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
   }
 
   const stars = awesome.stars || 0
-  const starMarkTooltip =
-    stars >= 5
-      ? `5星 · 不可错过 & 强烈推荐！`
-      : stars >= 4
-        ? `4星 · 推荐尝试！`
-        : stars >= 1
-          ? `${stars}星`
-          : '未分级'
+  const starMarkTooltip = awesomeStarLevel(stars)
 
   return (
     <Group
@@ -85,9 +89,13 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
       </Tooltip>
 
       <Tooltip label={awesome.desc} disabled={!awesome.desc}>
-        <Text c="gray.9" className="shrink-0 cursor-pointer text-[18px] leading-[1.3]">
+        <Link
+          href={`/awesome/${awesome.id}`}
+          className="shrink-0 cursor-pointer text-[18px] leading-[1.3] text-gray-900"
+          prefetch={null}
+        >
           {awesome.label}
-        </Text>
+        </Link>
       </Tooltip>
 
       <Text c="gray.5" className="shrink-0 cursor-default text-[18px] leading-[1.3] select-none">

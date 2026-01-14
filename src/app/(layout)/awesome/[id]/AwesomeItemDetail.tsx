@@ -1,0 +1,58 @@
+import { Rating, Stack, StackProps, Text } from '@mantine/core'
+import clsx from 'clsx'
+import Link from 'next/link'
+
+import { AwesomeItemResult } from '@/app/api/_awesome/items'
+import { KVTable, KVTableRow } from '@/components/tables/KVTable'
+
+import { awesomeStarLevel } from '../_list/ListItem'
+import TagItem from '../_tag/TagItem'
+
+export interface AwesomeItemDetailProps extends StackProps {
+  awesome: AwesomeItemResult
+}
+
+export default function AwesomeItemDetail(props: AwesomeItemDetailProps) {
+  const { awesome, className, ...restProps } = props
+
+  return (
+    <Stack {...restProps} className={clsx('', className)}>
+      <KVTable>
+        <KVTableRow label="官网" labelClassName="align-top" fieldClassName="break-words">
+          <Link className="underline" href={awesome.homepage}>
+            {awesome.homepage}
+          </Link>
+        </KVTableRow>
+
+        <KVTableRow label="源代码" labelClassName="align-top" fieldClassName="break-words">
+          {awesome.source ? <Link href={awesome.source}>{awesome.source}</Link> : '-'}
+        </KVTableRow>
+
+        <KVTableRow label="包" labelClassName="align-top" fieldClassName="break-words">
+          {awesome.registry ? <Link href={awesome.registry}>{awesome.registry}</Link> : '-'}
+        </KVTableRow>
+
+        <KVTableRow label="星级" labelClassName="align-top">
+          <Rating className="mr-2 inline-flex align-middle" value={awesome.stars || 0} readOnly />
+          <Text component="span" className="align-middle" inherit>
+            {awesomeStarLevel(awesome.stars || 0)}
+          </Text>
+        </KVTableRow>
+
+        <KVTableRow label="标签" labelClassName="align-top">
+          {awesome.tags && awesome.tags.length >= 1
+            ? awesome.tags.map(tag => <TagItem className="inline-flex" key={tag.id} tag={tag} />)
+            : '-'}
+        </KVTableRow>
+
+        <KVTableRow
+          label="介绍"
+          labelClassName="align-top"
+          fieldClassName="break-words whitespace-pre-wrap"
+        >
+          {awesome.desc || '-'}
+        </KVTableRow>
+      </KVTable>
+    </Stack>
+  )
+}

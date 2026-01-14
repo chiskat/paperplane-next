@@ -44,11 +44,11 @@ export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
 
   return (
     <Group
-      className={clsx('relative flex cursor-pointer flex-nowrap rounded-md select-none', className)}
+      className={clsx(
+        'relative flex cursor-pointer flex-nowrap items-center rounded-md px-2 py-1 select-none',
+        className
+      )}
       gap={8}
-      px={8}
-      py={4}
-      align="center"
       ref={ref}
       style={{ ...style, backgroundColor: bg }}
       {...attributes}
