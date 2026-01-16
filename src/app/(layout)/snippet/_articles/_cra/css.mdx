@@ -56,6 +56,12 @@ module.exports = {
           options: {
             // 如果需要主题、全局变量文件，请取消下面一行注释
             // additionalData: '@import "~@/styles/global.less";',
+            lessOptions: {
+              javascriptEnabled: true,
+              noIeCompat: true,
+              globalVars: {},
+              modifyVars: {},
+            },
           },
         },
       ],
