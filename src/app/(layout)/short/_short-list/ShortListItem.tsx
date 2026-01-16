@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from '@bprogress/next/app'
 import { Group, Highlight, Stack, Text, Tooltip } from '@mantine/core'
 import {
   IconArrowRight,
@@ -11,7 +12,6 @@ import {
 } from '@tabler/icons-react'
 import { trimEnd } from 'lodash-es'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 import { Short, ShortRedirectType } from '@/prisma/browser'

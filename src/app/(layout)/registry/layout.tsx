@@ -1,8 +1,9 @@
 'use client'
 
+import { useRouter } from '@bprogress/next/app'
 import { Flex, Group, Image, SegmentedControl, Stack, Text } from '@mantine/core'
 import NextImage from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect, useMemo } from 'react'
 
 const vendorOptions = [

@@ -1,7 +1,8 @@
 'use client'
 
+import { useRouter } from '@bprogress/next/app'
 import { SegmentedControl, SegmentedControlProps } from '@mantine/core'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 export function ArticleToggler(props: SegmentedControlProps & { catelog: string }) {
   const { catelog, onChange, ...restProps } = props

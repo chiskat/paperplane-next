@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from '@bprogress/next/app'
 import {
   Grid,
   GridCol,
@@ -21,7 +22,7 @@ import {
 } from '@tabler/icons-react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { ReactNode, useEffect, useMemo } from 'react'
 
 const fixedNav = [

@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from '@bprogress/next/app'
 import {
   Box,
   Button,
@@ -17,7 +18,6 @@ import { notifications } from '@mantine/notifications'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import { zod4Resolver } from 'mantine-form-zod-resolver'
-import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
 import GradientTitle from '@/components/labels/GradientTitle'

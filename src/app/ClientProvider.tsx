@@ -1,5 +1,6 @@
 'use client'
 
+import { AppProgressProvider } from '@bprogress/next'
 import { AuthQueryProvider } from '@daveyplate/better-auth-tanstack'
 import { MantineProvider } from '@mantine/core'
 import { DatesProvider } from '@mantine/dates'
@@ -24,13 +25,15 @@ export default function QueryProvider(props: PropsWithChildren) {
   return (
     <MantineProvider theme={appTheme}>
       <ModalsProvider>
-        <QueryClientProvider client={queryClient}>
-          <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-            <AuthQueryProvider queryOptions={{ structuralSharing: replaceEqualDeep }}>
-              <DatesProvider settings={{ locale: 'zh-cn' }}>{props.children}</DatesProvider>
-            </AuthQueryProvider>
-          </TRPCProvider>
-        </QueryClientProvider>
+        <AppProgressProvider>
+          <QueryClientProvider client={queryClient}>
+            <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+              <AuthQueryProvider queryOptions={{ structuralSharing: replaceEqualDeep }}>
+                <DatesProvider settings={{ locale: 'zh-cn' }}>{props.children}</DatesProvider>
+              </AuthQueryProvider>
+            </TRPCProvider>
+          </QueryClientProvider>
+        </AppProgressProvider>
       </ModalsProvider>
       <Notifications />
     </MantineProvider>
