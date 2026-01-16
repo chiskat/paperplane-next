@@ -19,17 +19,29 @@ export default function AwesomeItemDetail(props: AwesomeItemDetailProps) {
     <Stack {...restProps} className={clsx('', className)}>
       <KVTable>
         <KVTableRow label="官网" classNames={{ label: 'align-top', field: 'break-words' }}>
-          <Link className="underline" href={awesome.homepage}>
+          <Link className="underline" href={awesome.homepage} target="_blank">
             {awesome.homepage}
           </Link>
         </KVTableRow>
 
         <KVTableRow label="源代码" classNames={{ label: 'align-top', field: 'break-words' }}>
-          {awesome.source ? <Link href={awesome.source}>{awesome.source}</Link> : '-'}
+          {awesome.source ? (
+            <Link href={awesome.source} target="_blank">
+              {awesome.source}
+            </Link>
+          ) : (
+            '-'
+          )}
         </KVTableRow>
 
         <KVTableRow label="包" classNames={{ label: 'align-top', field: 'break-words' }}>
-          {awesome.registry ? <Link href={awesome.registry}>{awesome.registry}</Link> : '-'}
+          {awesome.registry ? (
+            <Link href={awesome.registry} target="_blank">
+              {awesome.registry}
+            </Link>
+          ) : (
+            '-'
+          )}
         </KVTableRow>
 
         <KVTableRow label="星级" classNames={{ label: 'align-top' }}>
