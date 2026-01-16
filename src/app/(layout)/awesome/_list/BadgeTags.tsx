@@ -1,4 +1,4 @@
-import { Group, Tooltip } from '@mantine/core'
+import { Group, Text, Tooltip } from '@mantine/core'
 import clsx from 'clsx'
 import { CSSProperties, ReactNode, useMemo } from 'react'
 
@@ -15,12 +15,18 @@ export default function BadgeTags(props: BadgeTagsProps) {
 
   const tagsItems = useMemo(() => {
     const result: ReactNode[] = []
+
     if (!awesome.tags || awesome.tags.length <= 0) {
       return null
     }
 
-    const colorTag = awesome.tags.filter(tag => tag.color && tag.color !== '#ffffff')
-    const textTag = awesome.tags.filter(tag => !tag.color || tag.color === '#ffffff')
+    const colorTag = awesome.tags
+      .filter(tag => tag.color && tag.color !== '#ffffff')
+      .sort((a, b) => a.index! - b.index!)
+    const textTag = awesome.tags
+      .filter(tag => !tag.color || tag.color === '#ffffff')
+      .sort((a, b) => a.index! - b.index!)
+
     ;[...colorTag, ...textTag].forEach(tag => {
       let tagDisplay: ReactNode = null
 
@@ -29,7 +35,7 @@ export default function BadgeTags(props: BadgeTagsProps) {
           <img
             src={tag.icon}
             alt={'tag ' + tag.label}
-            className="h-[20px] w-[20px] cursor-pointer"
+            className="h-[16px] w-[16px] cursor-pointer"
           />
         )
       } else if (tag.color) {
@@ -64,5 +70,16 @@ export default function BadgeTags(props: BadgeTagsProps) {
     )
   }, [awesome.tags, className, style])
 
-  return tagsItems
+  if (!awesome.tags || awesome.tags.length <= 0) {
+    return null
+  }
+
+  return (
+    <>
+      <Text c="gray.5" className="shrink-0 cursor-default text-[18px] leading-[1.3] select-none">
+        ·
+      </Text>
+      {tagsItems}
+    </>
+  )
 }

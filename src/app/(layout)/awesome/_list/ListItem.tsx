@@ -116,9 +116,9 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
 
       <BadgeSites className="shrink-0" awesome={awesome} />
 
-      <Group ml="auto" className="shrink-0" gap={8} pl={24}>
-        <BadgeTags className="shrink-0" awesome={awesome} />
+      <BadgeTags className="shrink-0" awesome={awesome} />
 
+      <Group ml="auto" className="shrink-0" gap={8} pl={24}>
         {edit === 'edit' ? (
           <>
             <ListItemEditButton
