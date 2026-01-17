@@ -48,7 +48,7 @@ export default createTheme({
     lg: '1280px',
     xl: '1680px',
   },
-  fontFamilyMonospace: `var(--font-source-code), -apple-system, sans-serif`,
+  fontFamilyMonospace: `var(--font-iosevka), -apple-system, sans-serif`,
   fontSizes: {
     xl: '32px',
     lg: '26px',

@@ -9,7 +9,7 @@ import { zhCN } from 'zod/locales'
 import '@/lib/dayjs'
 
 import ClientProvider from './ClientProvider'
-import { fontFZYanSong, fontSourceCodePro, fontSwift } from './fonts'
+import { fontFZYanSong, fontIosevka, fontSwift } from './fonts'
 
 import '@/styles/app.css'
 
@@ -27,7 +27,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       {...mantineHtmlProps}
       className={clsx(
         fontFZYanSong.variable,
-        fontSourceCodePro.variable,
+        fontIosevka.variable,
         fontSwift.variable,
         'antialiased'
       )}
