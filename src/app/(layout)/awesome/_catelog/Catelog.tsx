@@ -50,7 +50,7 @@ export default function Catelog(props: { scrollHeight: string | number; classNam
   }
 
   return (
-    <ScrollArea h={props.scrollHeight} offsetScrollbars="y">
+    <ScrollArea h={props.scrollHeight} offsetScrollbars="y" type="scroll">
       <Stack gap={0} className={clsx(props.className)}>
         <DndContext
           id={useId()}
