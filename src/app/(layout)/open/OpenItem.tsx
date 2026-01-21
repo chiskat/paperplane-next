@@ -4,7 +4,7 @@ import { Flex, Group, Stack, Text } from '@mantine/core'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
-import { twJoin } from 'tailwind-merge'
+import { twJoin, twMerge } from 'tailwind-merge'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 import GradientTitle from '@/components/labels/GradientTitle'
@@ -56,7 +56,10 @@ export default function OpenItem(props: OpenItemProps) {
 
   return (
     <BlurPopupCard
-      className={twJoin('rounded-md', current ? `from-lb-100 bg-gradient-to-r to-transparent` : '')}
+      className={twMerge(
+        'rounded-md',
+        current ? `from-lb-100 bg-gradient-to-r to-transparent` : ''
+      )}
       popupClassName={twJoin(
         current ? `from-lb-200 bg-gradient-to-br via-transparent to-transparent` : ''
       )}

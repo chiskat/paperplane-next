@@ -6,7 +6,6 @@ import { arrayMove, verticalListSortingStrategy, SortableContext } from '@dnd-ki
 import { ScrollArea, Stack } from '@mantine/core'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useId, useState } from 'react'
-import { twJoin } from 'tailwind-merge'
 
 import { AwesomeCatelogNode } from '@/app/api/_awesome/catelogs'
 import { useTRPC } from '@/lib/trpc-client'
@@ -51,7 +50,7 @@ export default function Catelog(props: { scrollHeight: string | number; classNam
 
   return (
     <ScrollArea h={props.scrollHeight} offsetScrollbars="y" type="scroll">
-      <Stack gap={0} className={twJoin(props.className)}>
+      <Stack gap={0} className={props.className}>
         <DndContext
           id={useId()}
           onDragStart={e => void setDragging(catelogs.find(item => item.id === e.active.id)!)}

@@ -16,8 +16,8 @@ function BaseTechTag(props: BaseTechTagProps) {
   const tag = (
     <Group
       className={twMerge(
-        className,
-        'rounded-sm border-1 border-solid border-gray-400 pb-2 text-[14px] shadow hover:bg-gray-100'
+        'rounded-sm border-1 border-solid border-gray-400 pb-2 text-[14px] shadow hover:bg-gray-100',
+        className
       )}
       px={8}
       py={4}

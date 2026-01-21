@@ -4,7 +4,7 @@ import { Flex, Stack, Text, Image } from '@mantine/core'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { twJoin } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 
@@ -33,8 +33,11 @@ export function SnippetCatelog(props: SnippetCatelogProps) {
 
   return (
     <BlurPopupCard
-      className={twJoin('rounded-md', current ? `from-lb-100 bg-gradient-to-r to-transparent` : '')}
-      popupClassName={twJoin(
+      className={twMerge(
+        'rounded-md',
+        current ? `from-lb-100 bg-gradient-to-r to-transparent` : ''
+      )}
+      popupClassName={twMerge(
         current ? `from-lb-200 bg-gradient-to-r via-lb-100 to-transparent` : ''
       )}
       px={6}

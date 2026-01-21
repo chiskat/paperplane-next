@@ -3,7 +3,6 @@
 import { Button, Stack, Tabs, TabsList, TabsPanel, TabsTab, Text } from '@mantine/core'
 import { useQuery } from '@tanstack/react-query'
 import { CSSProperties, FC, ReactNode, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/lib/trpc-client'
@@ -45,7 +44,7 @@ export default function OpenAPIDocs(props: OpenAPIDocsProps) {
   const [showApiKey, setShowApiKey] = useState(false)
 
   return (
-    <Stack className={twMerge(className)} style={style}>
+    <Stack className={className} style={style}>
       {title ? <GradientTitle>{title}</GradientTitle> : null}
 
       {desc ? <Text className="text-[18px] whitespace-pre-wrap text-[#333]">{desc}</Text> : null}

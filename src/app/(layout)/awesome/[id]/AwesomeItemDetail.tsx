@@ -1,6 +1,5 @@
 import { Rating, Stack, StackProps, Text } from '@mantine/core'
 import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
 
 import { AwesomeItemResult } from '@/app/api/_awesome/items'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
@@ -16,7 +15,7 @@ export default function AwesomeItemDetail(props: AwesomeItemDetailProps) {
   const { awesome, className, ...restProps } = props
 
   return (
-    <Stack {...restProps} className={twMerge('', className)}>
+    <Stack {...restProps} className={className}>
       <KVTable>
         <KVTableRow label="官网" classNames={{ field: 'break-all' }}>
           <Link className="underline" href={awesome.homepage} target="_blank">

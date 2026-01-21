@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
-import { twJoin, twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 
@@ -24,7 +24,7 @@ export default function WrapperForItem(props: WrapperForItemProps) {
         'rounded-md',
         current ? `from-lb-100 bg-gradient-to-r to-transparent` : ''
       )}
-      popupClassName={twJoin(
+      popupClassName={twMerge(
         current ? `from-lb-200 bg-gradient-to-br via-transparent to-transparent` : ''
       )}
       right={12}

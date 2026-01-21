@@ -1,5 +1,4 @@
 import { Skeleton, SkeletonProps, Stack } from '@mantine/core'
-import { twMerge } from 'tailwind-merge'
 
 export interface LoadingProps {
   h?: number[]
@@ -32,7 +31,7 @@ export default function Loading(props: LoadingProps) {
   )
 
   return (
-    <Stack className={twMerge(className)}>
+    <Stack className={className}>
       {list.map((item, idx) => (
         <Skeleton key={idx} height={item.height} width={item.width} radius="xl" />
       ))}

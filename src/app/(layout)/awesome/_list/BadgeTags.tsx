@@ -1,6 +1,5 @@
 import { Group, Text, Tooltip } from '@mantine/core'
 import { CSSProperties, ReactNode, useMemo } from 'react'
-import { twJoin } from 'tailwind-merge'
 
 import { AwesomeItemResult } from '@/app/api/_awesome/items'
 
@@ -64,7 +63,7 @@ export default function BadgeTags(props: BadgeTagsProps) {
     })
 
     return (
-      <Group className={twJoin(className)} style={style} gap={4}>
+      <Group className={className} style={style} gap={4}>
         {result}
       </Group>
     )
