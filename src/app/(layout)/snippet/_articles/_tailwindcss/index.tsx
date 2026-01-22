@@ -1,6 +1,9 @@
-import { SnippetArticleCatelog } from '../../list'
+import { SnippetCatelog } from '../../list'
 import config from './config.mdx'
 
-export const tailwindcss: SnippetArticleCatelog[] = [
-  { key: 'config', title: 'tailwind.config.js', component: config },
-]
+export const tailwindcss: SnippetCatelog = {
+  name: 'TailwindCSS',
+  key: 'tailwindcss',
+  icon: require('@/assets/snippet-icons/tailwindcss.svg').default,
+  article: [{ key: 'config', title: 'tailwind.config.js', component: config }],
+}

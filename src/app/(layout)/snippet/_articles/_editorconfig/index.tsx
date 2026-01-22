@@ -1,6 +1,9 @@
-import { SnippetArticleCatelog } from '../../list'
+import { SnippetCatelog } from '../../list'
 import editorconfigMDX from './editorconfig.mdx'
 
-export const editorconfig: SnippetArticleCatelog[] = [
-  { key: 'editorconfig', title: '.editorconfig', component: editorconfigMDX },
-]
+export const editorconfig: SnippetCatelog = {
+  name: 'EditorConfig',
+  key: 'editorconfig',
+  icon: require('@/assets/snippet-icons/editorconfig.svg').default,
+  article: [{ key: 'editorconfig', title: '.editorconfig', component: editorconfigMDX }],
+}
