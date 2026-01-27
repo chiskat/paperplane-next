@@ -66,14 +66,11 @@ export const catelogs = router({
 
   delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeCatelog.findFirstOrThrow({ where: { id: input.id } })
-
-    await Promise.all([
-      prisma.awesomeCatelog.delete({ where: { id: item.id } }),
-      prisma.awesomeCatelog.updateMany({
-        where: { parentId: item.parentId, index: { gt: item.index! } },
-        data: { index: { decrement: 1 } },
-      }),
-    ])
+    await prisma.awesomeCatelog.delete({ where: { id: item.id } })
+    await prisma.awesomeCatelog.updateMany({
+      where: { parentId: item.parentId, index: { gt: item.index! } },
+      data: { index: { decrement: 1 } },
+    })
   }),
 
   resort: loginProcedure.input(resortZod).mutation(async ({ input }) => {

@@ -99,14 +99,11 @@ export const items = router({
 
   delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } })
-
-    await Promise.all([
-      prisma.awesomeItem.delete({ where: { id: item.id } }),
-      prisma.awesomeItem.updateMany({
-        where: { catelogId: item.catelogId, index: { gt: item.index! } },
-        data: { index: { decrement: 1 } },
-      }),
-    ])
+    await prisma.awesomeItem.delete({ where: { id: item.id } })
+    await prisma.awesomeItem.updateMany({
+      where: { catelogId: item.catelogId, index: { gt: item.index! } },
+      data: { index: { decrement: 1 } },
+    })
   }),
 
   resort: loginProcedure.input(resortZod).mutation(async ({ input }) => {

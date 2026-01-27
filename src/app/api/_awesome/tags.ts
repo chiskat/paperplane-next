@@ -40,14 +40,11 @@ export const tags = router({
 
   delete: loginProcedure.input(deleteZod).mutation(async ({ input }) => {
     const item = await prisma.awesomeTag.findFirstOrThrow({ where: { id: input.id } })
-
-    await Promise.all([
-      prisma.awesomeTag.delete({ where: { id: item.id } }),
-      prisma.awesomeTag.updateMany({
-        where: { index: { gt: item.index! } },
-        data: { index: { decrement: 1 } },
-      }),
-    ])
+    await prisma.awesomeTag.delete({ where: { id: item.id } })
+    await prisma.awesomeTag.updateMany({
+      where: { index: { gt: item.index! } },
+      data: { index: { decrement: 1 } },
+    })
   }),
 
   resort: loginProcedure.input(resortZod).mutation(async ({ input }) => {
