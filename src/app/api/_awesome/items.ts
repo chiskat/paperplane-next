@@ -82,13 +82,15 @@ export const items = router({
   }),
 
   update: loginProcedure.input(awesomeItemZod).mutation(async ({ input }) => {
-    const [origin, newIndex] = await Promise.all([
-      prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } }),
-      prisma.awesomeItem.count({ where: { catelogId: input.catelogId } }),
-    ])
+    const origin = await prisma.awesomeItem.findFirstOrThrow({ where: { id: input.id } })
     const data = input as AwesomeItem
+
     if (origin.catelogId !== input.catelogId) {
-      data.index = newIndex
+      data.index = await prisma.awesomeItem.count({ where: { catelogId: input.catelogId } })
+      await prisma.awesomeItem.updateMany({
+        where: { catelogId: origin.catelogId, index: { gt: origin.index! } },
+        data: { index: { decrement: 1 } },
+      })
     }
 
     return prisma.awesomeItem.update({
