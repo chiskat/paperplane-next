@@ -22,6 +22,13 @@ export default async function OpenLayout(props: LayoutProps<'/open'>) {
             desc='和 "use-upgrade" 配套的工具，可通过 CI/CD 命令来控制其行为，避免过度打扰用户。'
           />
           <OpenItem
+            name="omn"
+            repo="chiskat/omn"
+            type="npm"
+            subpath="/omn"
+            desc="实用、轻量、独特的工具函数合集，具有 100% 的 TypeScript 支持。"
+          />
+          <OpenItem
             name="docker-deps"
             repo="chiskat/docker-deps"
             type="npm"
