@@ -73,14 +73,6 @@ export function OpenDetailTable(props: OpenDetailTableProps) {
               />
             </a>
           )}
-
-          <a href={`https://drone.paperplane.cc/${giteaRepo}`} target="_blank">
-            <img
-              className="h-[20px]"
-              src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/drone/build/${giteaRepo}?server=https%3A%2F%2Fdrone.paperplane.cc&style=flat&logo=drone`}
-              alt="CI/CD status"
-            />
-          </a>
         </Group>
       </KVTableRow>
 

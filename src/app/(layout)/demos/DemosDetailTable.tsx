@@ -40,13 +40,6 @@ export function DemosDetailTable(props: DemosDetailTableProps) {
         <Group gap={16}>
           <GitHubLink repo={repo} />
           <GiteaLink repo={repo} />
-          <a href={`https://drone.paperplane.cc/${repo}`} target="_blank">
-            <img
-              className="h-[20px]"
-              src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/drone/build/${repo}?server=https%3A%2F%2Fdrone.paperplane.cc&style=flat&logo=drone`}
-              alt="CI/CD status"
-            />
-          </a>
         </Group>
       </KVTableRow>
 
