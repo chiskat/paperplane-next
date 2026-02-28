@@ -15,13 +15,6 @@ export default async function OpenLayout(props: LayoutProps<'/open'>) {
             desc="可在网站发布新版本时提醒用户，开箱即用，零配置适配 React/Vue/Angular 等网站。"
           />
           <OpenItem
-            name="use-upgrade-webpack-plugin"
-            repo="chiskat/use-upgrade-webpack-plugin"
-            type="npm"
-            subpath="/use-upgrade-webpack-plugin"
-            desc='和 "use-upgrade" 配套的工具，可通过 CI/CD 命令来控制其行为，避免过度打扰用户。'
-          />
-          <OpenItem
             name="omn"
             repo="chiskat/omn"
             type="npm"
