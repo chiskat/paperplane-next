@@ -29,8 +29,8 @@
 pnpm dev              # 启动开发服务器
 pnpm build            # 构建项目
 pnpm build:prod       # 生产环境构建（使用 production 环境变量）
-pnpm start            # 启动生产服务器（Next.js 默认）
-pnpm start:prod       # 启动生产服务器（standalone 模式）
+pnpm start            # 启动生产服务器
+pnpm start:prod       # 以生产模式运行构建产物
 pnpm lint             # 使用 ESLint 检查代码
 pnpm format           # 使用 Prettier 检查代码
 pnpm check-types      # 使用 tsc 检查代码
@@ -49,7 +49,6 @@ pnpm auth:generate    # 生成 better-auth 相关代码（别名 auth:gen）
 ```
 ├── prisma/                        # Prisma 数据库
 │   ├── models/                    # 分模块的 Prisma Schema
-│   ├── migrations/                # 数据库迁移文件
 │   └── schema.prisma              # Prisma 主配置
 ├── src/
 │   ├── app/                       # Next.js App Router
@@ -71,30 +70,12 @@ pnpm auth:generate    # 生成 better-auth 相关代码（别名 auth:gen）
 │   │   │   ├── openapi.json/      # OpenAPI Schema
 │   │   │   └── appRouter.ts       # tRPC 路由汇总
 │   │   ├── ClientProvider.tsx     # 客户端 Provider 汇总（tRPC、QueryClient 等）
-│   │   ├── layout.tsx             # 根布局
-│   │   ├── page.tsx               # 首页
-│   │   ├── theme.ts               # Mantine 主题配置
-│   │   └── fonts.ts               # Next.js 字体配置
-│   ├── components/                # 通用组件
-│   ├── lib/                       # 核心库与初始化
-│   │   ├── auth.ts                # better-auth 服务端配置
-│   │   ├── auth-client.ts         # better-auth 客户端配置
-│   │   ├── prisma.ts              # Prisma 客户端实例
-│   │   ├── redis.ts               # Redis 连接
-│   │   ├── trpc.ts                # tRPC 初始化与 Context
-│   │   ├── trpc-server.ts         # tRPC 服务端调用
-│   │   ├── trpc-client.ts         # tRPC 客户端调用
-│   │   ├── query-client.ts        # @tanstack/react-query 客户端
-│   │   ├── dayjs.ts               # dayjs 统一初始化
-│   │   ├── s3-internal.ts         # S3 内部存储
-│   │   ├── s3-public.ts           # S3 公开存储
-│   │   ├── structural-sharing.ts  # 在 @tanstack/react-query 和 tRPC 集成时处理 Date 字段
-│   │   └── form-data-transformer.ts # 处理 tRPC 传输 FormData
+│   ├── components/                # 通用 UI 组件
+│   ├── lib/                       # 各功能组件
 │   ├── prisma/                    # 由 Prisma 生成，不应自行修改
 │   ├── zod/                       # Zod 校验 Schema（前后端共用）
 │   ├── types/                     # TypeScript 类型声明
-│   ├── styles/                    # 全局样式
-│   │   ├── app.css                # 应用主样式
+│   ├── styles/                    # 样式
 │   │   ├── theme.css              # 主题变量，由工具生成，不应自行修改
 │   │   └── mdx.css                # Markdown 样式
 │   ├── assets/                    # 静态资源（图标等）
