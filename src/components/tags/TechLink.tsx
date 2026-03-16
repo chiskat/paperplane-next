@@ -57,7 +57,7 @@ export function GiteaLink(props: WebsiteLinkProps) {
       icon={require('@/assets/alphabet-icons/gitea.svg').default}
       className={props.className}
     >
-      {props.children || 'Gitea'}
+      {props.children || 'Gitea 镜像'}
     </BaseLink>
   )
 }

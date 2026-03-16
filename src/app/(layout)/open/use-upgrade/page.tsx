@@ -1,7 +1,7 @@
 import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
-import { ReactTag, VueTag } from '@/components/tags/TechTag'
+import { ReactTag, ViteTag, VueTag, WebpackTag } from '@/components/tags/TechTag'
 
 import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
@@ -14,7 +14,13 @@ export default function UseUpgradePage() {
     <Stack gap={12}>
       <GradientTitle>{name}</GradientTitle>
       <Divider />
-      <OpenDetailTable type="npm" name={name} repo={repo} tech={[ReactTag, VueTag]} />
+      <OpenDetailTable
+        type="npm"
+        name={name}
+        repo={repo}
+        homepage="https://use-upgrade.paperplane.cc"
+        tech={[ReactTag, VueTag, ViteTag, WebpackTag]}
+      />
       <Divider />
       <Desc />
     </Stack>

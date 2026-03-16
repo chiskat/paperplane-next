@@ -169,6 +169,16 @@ export function WebpackTag() {
   )
 }
 
+export function ViteTag() {
+  return (
+    <BaseTechTag
+      title="Vite"
+      href="https://vitejs.dev/"
+      icon={require('@/assets/alphabet-deps/vite.svg').default}
+    />
+  )
+}
+
 export function AntDTag() {
   return (
     <BaseTechTag

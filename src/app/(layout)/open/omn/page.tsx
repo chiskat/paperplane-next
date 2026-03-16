@@ -13,7 +13,7 @@ export default function OmnPage() {
     <Stack gap={12}>
       <GradientTitle>{name}</GradientTitle>
       <Divider />
-      <OpenDetailTable type="npm" name={name} repo={repo} />
+      <OpenDetailTable type="npm" name={name} repo={repo} homepage="https://omn.paperplane.cc" />
       <Divider />
       <Desc />
     </Stack>

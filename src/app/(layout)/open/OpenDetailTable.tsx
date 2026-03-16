@@ -1,5 +1,11 @@
 import { Group, Highlight } from '@mantine/core'
-import { IconCpu, IconFileDescription, IconHome, IconVersions } from '@tabler/icons-react'
+import {
+  IconCpu,
+  IconFileDescription,
+  IconHome,
+  IconPackage,
+  IconVersions,
+} from '@tabler/icons-react'
 import { FC } from 'react'
 
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
@@ -9,19 +15,28 @@ export interface OpenDetailTableProps {
   type: 'docker' | 'npm'
   name: string
   repo: string
+  homepage?: string
   giteaRepo?: string
   tech?: FC | FC[]
   overrideNameInLink?: string
 }
 
 export function OpenDetailTable(props: OpenDetailTableProps) {
-  const { type, name, repo, giteaRepo = repo, tech, overrideNameInLink } = props
+  const { type, name, repo, homepage, giteaRepo = repo, tech, overrideNameInLink } = props
 
   const nameInLink = overrideNameInLink || name
 
   return (
     <KVTable>
-      <KVTableRow label="主页" icon={<IconHome />}>
+      {homepage ? (
+        <KVTableRow label="主页" icon={<IconHome />} classNames={{ field: 'align-middle' }}>
+          <a href={homepage} target="_blank" className="text-lb hover:underline">
+            {homepage}
+          </a>
+        </KVTableRow>
+      ) : null}
+
+      <KVTableRow label="发布页" icon={<IconPackage />}>
         {type === 'docker' ? (
           <DockerHubLink repo={nameInLink}>
             <Highlight
@@ -44,7 +59,7 @@ export function OpenDetailTable(props: OpenDetailTableProps) {
       </KVTableRow>
 
       <KVTableRow
-        label="源码"
+        label="源代码"
         icon={<IconFileDescription />}
         classNames={{ field: 'align-middle' }}
       >
