@@ -19,11 +19,6 @@ notepad c:\windows\system32\drivers\etc\hosts
 # 解除 Windows 系统对 FTP 传输速度的限制
 netsh int tcp set global autotuninglevel=restricted
 netsh interface tcp set heuristics disabled
-
-# 修改终端编码为 UTF-8（默认是 GBK）
-chcp 65001
-# 修改回 GBK
-chcp 936
 ```
 
 ## 端口占用问题
