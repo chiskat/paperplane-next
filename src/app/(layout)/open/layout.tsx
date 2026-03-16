@@ -53,14 +53,14 @@ export default async function OpenLayout(props: LayoutProps<'/open'>) {
           />
           <OpenItem
             name="chiskat/docker-api"
-            repo="paperplane-docker/docker-api"
+            repo="chiskat/docker-api"
             type="docker"
             subpath="/docker-api"
             desc="通过简单的挂载目录，使得可以通过 HTTP 访问 Docker Engine API。"
           />
           <OpenItem
             name="chiskat/baseline-node"
-            repo="paperplane-docker/baseline-node"
+            repo="chiskat/baseline-node"
             type="docker"
             subpath="/baseline-node"
             desc="旨在为 Web 开发者提供一系列开箱即用的预配置的 Node.js 镜像。"

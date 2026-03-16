@@ -7,7 +7,7 @@ import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
 const name = 'chiskat/docker-api'
-const repo = 'paperplane-docker/docker-api'
+const repo = 'chiskat/docker-api'
 
 export default function DockerApiPage() {
   return (

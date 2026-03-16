@@ -7,7 +7,7 @@ import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
 
 const name = 'chiskat/baseline-node'
-const repo = 'paperplane-docker/baseline-node'
+const repo = 'chiskat/baseline-node'
 const shieldName = name + '20'
 
 export default function PaperPlaneApiBasePage() {
