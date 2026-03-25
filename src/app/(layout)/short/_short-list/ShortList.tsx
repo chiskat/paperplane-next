@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import GradientTitle from '@/components/labels/GradientTitle'
 import Loading from '@/components/layouts/Loading'
 import { useTRPC } from '@/lib/trpc-client'
-
 import ShortListItem from './ShortListItem'
 
 export default function ShortList() {

@@ -2,9 +2,8 @@ import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { MantineTag, NextjsTag, PostgreSQLTag, PrismaTag, TRPCTag } from '@/components/tags/TechTag'
-
-import { DemosDetailTable } from '../DemosDetailTable'
 import Desc from './Desc.mdx'
+import { DemosDetailTable } from '../DemosDetailTable'
 
 export default function CITechSharePage() {
   return (

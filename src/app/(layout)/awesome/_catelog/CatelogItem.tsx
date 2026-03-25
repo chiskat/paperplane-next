@@ -22,9 +22,8 @@ import { AwesomeCatelogNode } from '@/app/api/trpc/_awesome/catelogs'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
-
-import { awesomeScrollIntoViewEmitter, useAwesome } from '../AwesomeState'
 import CatelogEditButton from './CatelogEditButton'
+import { awesomeScrollIntoViewEmitter, useAwesome } from '../AwesomeState'
 
 export interface CatelogItemProps {
   catelog: AwesomeCatelogNode

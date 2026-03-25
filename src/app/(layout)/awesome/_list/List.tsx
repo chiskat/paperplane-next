@@ -3,9 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect, useRef } from 'react'
 
 import { useTRPC } from '@/lib/trpc-client'
-
-import { awesomeScrollIntoViewEmitter } from '../AwesomeState'
 import ListItemGroup from './ListItemGroup'
+import { awesomeScrollIntoViewEmitter } from '../AwesomeState'
 
 export default function List(props: { scrollHeight: string | number; className?: string }) {
   const trpc = useTRPC()

@@ -1,5 +1,4 @@
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
-import '@mantine/dates/styles.css'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { twJoin } from 'tailwind-merge'
@@ -11,6 +10,7 @@ import '@/lib/dayjs'
 import ClientProvider from './ClientProvider'
 import { fontFZYanSong, fontIosevka, fontSwift } from './fonts'
 
+import '@mantine/dates/styles.css'
 import '@/styles/app.css'
 
 z.config(zhCN())

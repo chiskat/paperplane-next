@@ -3,7 +3,6 @@
 import { Stack } from '@mantine/core'
 
 import OpenAPIDocs from '@/components/cards/OpenAPIDocs'
-
 import ShortApiInputDocs from './ShortApiInputDocs.mdx'
 import ShortApiOutputDocs from './ShortApiOutputDocs.mdx'
 

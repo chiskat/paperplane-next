@@ -10,13 +10,13 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { createTRPCClient } from '@trpc/client'
 import { PropsWithChildren, useState } from 'react'
 
-import appTheme from '@/app/theme'
 import '@/lib/dayjs'
+
+import appTheme from '@/app/theme'
 import { getQueryClient } from '@/lib/query-client'
 import { replaceEqualDeep } from '@/lib/structural-sharing'
-
-import { trpcClientConfig, TRPCProvider } from '../lib/trpc-client'
 import type { AppRouter } from './api/appRouter'
+import { trpcClientConfig, TRPCProvider } from '../lib/trpc-client'
 
 export default function QueryProvider(props: PropsWithChildren) {
   const [queryClient] = useState(() => getQueryClient())

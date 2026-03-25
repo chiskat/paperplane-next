@@ -14,7 +14,6 @@ import { twMerge } from 'tailwind-merge'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
-
 import WrapperForItem from './WrapperForItem'
 
 export interface DemosItemProps {

@@ -1,9 +1,8 @@
 import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
-
-import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
+import { OpenDetailTable } from '../OpenDetailTable'
 
 const name = 'mp-websocket-polyfill'
 const repo = 'chiskat/mp-websocket-polyfill'

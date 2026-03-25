@@ -3,7 +3,7 @@ import 'server-only'
 import { prismaAdapter } from 'better-auth/adapters/prisma'
 import { betterAuth } from 'better-auth/minimal'
 import { nextCookies } from 'better-auth/next-js'
-import { genericOAuth, apiKey } from 'better-auth/plugins'
+import { apiKey, genericOAuth } from 'better-auth/plugins'
 
 import { prisma } from '@/lib/prisma'
 import { redis } from '@/lib/redis'

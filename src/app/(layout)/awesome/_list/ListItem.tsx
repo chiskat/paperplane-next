@@ -12,11 +12,10 @@ import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
 import { AwesomeCatelog } from '@/prisma/client'
-
-import { useAwesome } from '../AwesomeState'
 import BadgeSites from './BadgeSites'
 import BadgeTags from './BadgeTags'
 import ListItemEditButton from './ListItemEditButton'
+import { useAwesome } from '../AwesomeState'
 
 export interface ListItemsProps {
   awesome: AwesomeItemResult

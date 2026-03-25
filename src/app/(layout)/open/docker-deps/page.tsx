@@ -2,9 +2,8 @@ import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { DockerTag } from '@/components/tags/TechTag'
-
-import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
+import { OpenDetailTable } from '../OpenDetailTable'
 
 const name = 'docker-deps'
 const repo = 'chiskat/docker-deps'

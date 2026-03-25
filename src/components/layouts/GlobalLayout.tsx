@@ -1,8 +1,8 @@
 import { AppShell, AppShellHeader, AppShellMain, Container, Flex } from '@mantine/core'
 import { type ReactNode } from 'react'
 
-import UserStatus from '../user/UserStatus'
 import HeaderSectionSelector from './HeaderSectionSelector'
+import UserStatus from '../user/UserStatus'
 
 export default function GlobalLayout(props: { children: ReactNode }) {
   return (

@@ -10,7 +10,6 @@ import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
 import { useTRPC } from '@/lib/trpc-client'
 import { AwesomeTag } from '@/prisma/client'
-
 import TagEditButton from './TagEditButton'
 
 export interface TagItemProps {

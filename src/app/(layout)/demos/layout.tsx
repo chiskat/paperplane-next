@@ -19,7 +19,6 @@ import {
   TRPCTag,
   VueTag,
 } from '@/components/tags/TechTag'
-
 import DemosItem from './DemosItem'
 
 export default function OpenLayout(props: LayoutProps<'/demos'>) {

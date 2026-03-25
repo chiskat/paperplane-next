@@ -7,13 +7,12 @@ import { useState } from 'react'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { useSession } from '@/lib/auth-client'
-
-import { useAwesome } from './AwesomeState'
 import Catelog from './_catelog/Catelog'
 import CatelogEditButton from './_catelog/CatelogEditButton'
 import List from './_list/List'
 import ListItemEditButton from './_list/ListItemEditButton'
 import TagPanelButton from './_tag/TagPanelButton'
+import { useAwesome } from './AwesomeState'
 
 const headerTop = 130 + 16
 const headerHeight = 50

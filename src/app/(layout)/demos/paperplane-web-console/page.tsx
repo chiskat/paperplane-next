@@ -9,9 +9,8 @@ import {
   RedisTag,
   TDesignTag,
 } from '@/components/tags/TechTag'
-
-import { DemosDetailTable } from '../DemosDetailTable'
 import Desc from './Desc.mdx'
+import { DemosDetailTable } from '../DemosDetailTable'
 
 export default function CITechSharePage() {
   return (

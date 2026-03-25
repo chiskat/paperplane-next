@@ -5,7 +5,6 @@ import { headers } from 'next/headers'
 import { auth } from '@/lib/auth'
 import { getQueryClient } from '@/lib/query-client'
 import { trpcServer } from '@/lib/trpc-server'
-
 import AwesomeState from './AwesomeState'
 
 export default async function AwesomeLayout({ children }: LayoutProps<'/awesome'>) {

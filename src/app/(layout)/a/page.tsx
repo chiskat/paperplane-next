@@ -10,7 +10,6 @@ import {
   QuickReferenceTag,
   ShieldsIOTag,
 } from '@/components/tags/TechTag'
-
 import AItem from './AItem'
 
 export default function AlphabetPage() {

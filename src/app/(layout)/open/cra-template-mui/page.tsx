@@ -2,9 +2,8 @@ import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { CRATag, MuiTag, ReactTag } from '@/components/tags/TechTag'
-
-import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
+import { OpenDetailTable } from '../OpenDetailTable'
 
 const name = '@paperplane/cra-template-mui'
 const repo = 'paperplane-npm/cra-template-mui'

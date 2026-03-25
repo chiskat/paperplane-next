@@ -9,7 +9,6 @@ import { useId, useState } from 'react'
 
 import { useTRPC } from '@/lib/trpc-client'
 import { AwesomeTag } from '@/prisma/client'
-
 import TagEditButton from './TagEditButton'
 import TagItem, { DraggableTagItem } from './TagItem'
 

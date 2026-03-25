@@ -10,8 +10,8 @@ import {
 import { createTRPCContext } from '@trpc/tanstack-react-query'
 import superjson from 'superjson'
 
-import type { AppRouter } from '../app/api/appRouter'
 import { transformFormDataLink } from './form-data-transformer'
+import type { AppRouter } from '../app/api/appRouter'
 
 export const trpcClientConfig: Parameters<typeof createTRPCProxyClient>[0] = {
   links: [

@@ -1,4 +1,4 @@
-import { Divider, Group, Image, Stack, Text, Highlight } from '@mantine/core'
+import { Divider, Group, Highlight, Image, Stack, Text } from '@mantine/core'
 import { IconCpu, IconFileDescription, IconLink } from '@tabler/icons-react'
 import NextImage from 'next/image'
 import Link from 'next/link'

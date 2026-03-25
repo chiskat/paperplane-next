@@ -17,7 +17,6 @@ import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { authClient, useSession } from '@/lib/auth-client'
-
 import LoginButton from './LoginButton'
 
 function UserStatus(props: { className?: string }) {

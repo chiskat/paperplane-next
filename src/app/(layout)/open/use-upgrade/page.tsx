@@ -2,9 +2,8 @@ import { Divider, Stack } from '@mantine/core'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { ReactTag, ViteTag, VueTag, WebpackTag } from '@/components/tags/TechTag'
-
-import { OpenDetailTable } from '../OpenDetailTable'
 import Desc from './Desc.mdx'
+import { OpenDetailTable } from '../OpenDetailTable'
 
 const name = 'use-upgrade'
 const repo = 'chiskat/use-upgrade'

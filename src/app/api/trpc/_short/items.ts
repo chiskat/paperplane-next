@@ -11,7 +11,6 @@ import { ShortRedirectType } from '@/prisma/enums'
 import { ShortFindFirstArgs, ShortWhereInput } from '@/prisma/models'
 import { deleteZod, paginationZod } from '@/zod/common'
 import { addShortItemZod, shortItemReturn, shortItemZod, shortURLPrefix } from '@/zod/short'
-
 import { generateShortKeyByRecord, ShortKeyRecord } from './generateShortKey'
 
 async function findValidShortItemByKey(key: string, mergeOptions: ShortFindFirstArgs = {}) {

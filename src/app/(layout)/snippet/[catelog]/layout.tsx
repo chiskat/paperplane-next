@@ -4,9 +4,8 @@ import { notFound } from 'next/navigation'
 import { ReactNode } from 'react'
 
 import GradientTitle from '@/components/labels/GradientTitle'
-
-import { catelogs } from '../list'
 import { ArticleToggler } from './ArticleToggler'
+import { catelogs } from '../list'
 
 const defaultIcon = require('@/assets/snippet-icons/default.svg').default
 

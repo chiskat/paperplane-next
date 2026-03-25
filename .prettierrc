@@ -7,19 +7,19 @@
   "arrowParens": "avoid",
   "endOfLine": "lf",
   "plugins": [
-    "@trivago/prettier-plugin-sort-imports",
+    "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-prisma"
   ],
   "importOrder": [
     "^(server|client)-only$",
-    "^@?[a-zA-Z]+.+",
-    "^@/(?!.*\\.(css|scss|less)$)",
-    "^\\.\\.?/(?!.*.(css|scss|less)$)",
-    "^.(?!(css|scss|less)$)[^.]*$",
-    "(.css|.scss|.less)$"
-  ],
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": false,
-  "importOrderGroupNamespaceSpecifiers": false
+    "<BUILTIN_MODULES>",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/(.*)$",
+    "^\\./(?!.*\\.(css|scss|less)$).*$",
+    "^\\.\\./(?!.*\\.(css|scss|less)$).*$",
+    "^(?!@).*\\.(css|scss|less)$",
+    "^@.+\\.(css|scss|less)$"
+  ]
 }

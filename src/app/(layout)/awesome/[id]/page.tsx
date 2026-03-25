@@ -9,7 +9,6 @@ import { use } from 'react'
 import GradientTitle from '@/components/labels/GradientTitle'
 import Loading from '@/components/layouts/Loading'
 import { useTRPC } from '@/lib/trpc-client'
-
 import AwesomeItemDetail from './AwesomeItemDetail'
 
 export default function AwesomeDetailPage(props: PageProps<'/awesome/[id]'>) {

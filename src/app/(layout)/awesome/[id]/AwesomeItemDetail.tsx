@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { AwesomeItemResult } from '@/app/api/trpc/_awesome/items'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
-
 import { awesomeStarLevel } from '../_list/ListItem'
 import TagItem from '../_tag/TagItem'
 

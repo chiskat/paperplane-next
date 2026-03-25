@@ -15,10 +15,10 @@ import {
 } from '@mantine/core'
 import {
   IconCaretDownFilled,
-  IconMapPinFilled,
-  IconGridDots,
-  IconExternalLink,
   IconChevronRight,
+  IconExternalLink,
+  IconGridDots,
+  IconMapPinFilled,
 } from '@tabler/icons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

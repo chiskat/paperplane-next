@@ -8,10 +8,9 @@ import { twMerge } from 'tailwind-merge'
 
 import { AwesomeItemResult, AwesomeTreeResult } from '@/app/api/trpc/_awesome/items'
 import { useTRPC } from '@/lib/trpc-client'
-
-import { useAwesome } from '../AwesomeState'
 import ListItem, { DraggableListItem } from './ListItem'
 import ListItemEditButton from './ListItemEditButton'
+import { useAwesome } from '../AwesomeState'
 
 export interface ListItemGroupProps {
   catelog: AwesomeTreeResult

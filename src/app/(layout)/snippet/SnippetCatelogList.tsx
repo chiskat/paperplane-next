@@ -1,6 +1,6 @@
 'use client'
 
-import { Stack, Text, Image, Group, ScrollArea, SimpleGrid, Divider } from '@mantine/core'
+import { Divider, Group, Image, ScrollArea, SimpleGrid, Stack, Text } from '@mantine/core'
 import { IconPointFilled } from '@tabler/icons-react'
 import NextImage from 'next/image'
 import Link from 'next/link'
