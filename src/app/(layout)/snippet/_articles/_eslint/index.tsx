@@ -7,6 +7,7 @@ export const eslint: SnippetCatelog = {
   article: [
     { key: 'intro', title: '配置说明', component: require('./intro.mdx').default },
     { key: 'react', title: 'React + TS', component: require('./react.mdx').default },
+    { key: 'nextjs', title: 'Next.js', component: require('./nextjs.mdx').default },
     { key: 'typescript', title: 'TypeScript', component: require('./typescript.mdx').default },
     { key: 'monorepo', title: 'Monorepo 示例', component: require('./monorepo.mdx').default },
     { key: 'v8', title: '旧版 v8', component: require('./v8.mdx').default },
