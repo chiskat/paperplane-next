@@ -5,7 +5,7 @@ services:
     container_name: paperplane-next-local
     working_dir: /paperplane-next
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - .:/paperplane-next
       - /etc/localtime:/etc/localtime:ro

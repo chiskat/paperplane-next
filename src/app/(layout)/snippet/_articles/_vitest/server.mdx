@@ -19,8 +19,8 @@ export default defineConfig({
 然后，创建文件 `/tests/steup.ts`：
 
 ```typescript
-import express, { json } from 'express'
 import type { AddressInfo } from 'net'
+import express, { json } from 'express'
 import type { TestProject } from 'vitest/node'
 
 export default async function setup(project: TestProject) {

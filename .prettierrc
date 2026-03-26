@@ -19,7 +19,6 @@
     "^@/(.*)$",
     "^\\./(?!.*\\.(css|scss|less)$).*$",
     "^\\.\\./(?!.*\\.(css|scss|less)$).*$",
-    "^(?!@).*\\.(css|scss|less)$",
-    "^@.+\\.(css|scss|less)$"
+    "\\.(css|scss|less)$"
   ]
 }
