@@ -3,8 +3,6 @@ import { CSSProperties, forwardRef, ReactNode } from 'react'
 
 import { cn } from '@/lib/style'
 
-import './BlurPopupCard.css'
-
 export interface BlurPopupCardProps {
   px?: number
   py?: number
@@ -38,7 +36,7 @@ export const BlurPopupCard = forwardRef<any, BlurPopupCardProps>(
         px={px}
         py={py}
         pos="relative"
-        className={cn('blur-popup-card', className)}
+        className={cn('blur-popup-card group', className)}
         style={style}
         ref={ref}
       >
@@ -52,7 +50,7 @@ export const BlurPopupCard = forwardRef<any, BlurPopupCardProps>(
           right={0 - px - popupPx + right}
           pos="absolute"
           className={cn(
-            'blur-popup-card__popup z-10 rounded-md bg-white/60 shadow-[0_0_5px_0_rgba(0,0,0,0.45)] backdrop-blur-lg',
+            'blur-popup-card__popup z-10 hidden rounded-md bg-white/60 shadow-[0_0_5px_0_rgba(0,0,0,0.45)] backdrop-blur-lg group-hover:block hover:block',
             popupClassName
           )}
         >
