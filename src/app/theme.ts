@@ -1,5 +1,6 @@
 import { Container, createTheme } from '@mantine/core'
-import { twJoin } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 export default createTheme({
   primaryColor: 'lb',
@@ -68,7 +69,7 @@ export default createTheme({
     },
     Container: Container.extend({
       classNames: (_, { size }) => ({
-        root: twJoin(size === 'responsive' ? 'container--responsive' : ''),
+        root: cn(size === 'responsive' ? 'container--responsive' : ''),
       }),
     }),
   },

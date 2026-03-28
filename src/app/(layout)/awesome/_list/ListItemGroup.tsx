@@ -4,9 +4,9 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-ki
 import { Divider, Group, Stack, Text } from '@mantine/core'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { CSSProperties, useId, useMemo, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { AwesomeItemResult, AwesomeTreeResult } from '@/app/api/trpc/_awesome/items'
+import { cn } from '@/lib/style'
 import { useTRPC } from '@/lib/trpc-client'
 import ListItem, { DraggableListItem } from './ListItem'
 import ListItemEditButton from './ListItemEditButton'
@@ -69,12 +69,12 @@ export default function ListItemGroup(props: ListItemGroupProps) {
   }
 
   if (!edit && list.length <= 0) {
-    return <div className={twMerge(`awesome__catelog-group__id-${catelog.id}`, className)}></div>
+    return <div className={cn(`awesome__catelog-group__id-${catelog.id}`, className)}></div>
   }
 
   return (
     <Stack
-      className={twMerge(`awesome__catelog-group__id-${catelog.id}`, className)}
+      className={cn(`awesome__catelog-group__id-${catelog.id}`, className)}
       pos="relative"
       style={style}
       pr={24}

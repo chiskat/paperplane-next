@@ -23,7 +23,8 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode, useEffect, useMemo } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 const fixedNav = [
   { value: '/a', label: '导航', title: 'Alphabet · 导航索引' },
@@ -51,7 +52,7 @@ function DynamicNavLink(props: { href: string; span?: GridColProps['span']; chil
   return (
     <GridCol span={span || 6}>
       <Group
-        className={twMerge(
+        className={cn(
           'cursor-pointer flex-nowrap items-center rounded-sm border-2 border-solid px-3 py-2 font-sans',
           isActive
             ? 'border-ma bg-gray-50 text-gray-800'
@@ -146,7 +147,7 @@ export default function HeaderSectionSelector(props: { className?: string }) {
   useEffect(() => void allNav.forEach(item => void router.prefetch(item.value)), [router])
 
   return (
-    <Stack className={twMerge(props.className)} gap={8} align="start">
+    <Stack className={cn(props.className)} gap={8} align="start">
       <SegmentedControl
         color="lb"
         size="sm"

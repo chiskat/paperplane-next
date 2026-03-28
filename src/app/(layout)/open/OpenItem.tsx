@@ -4,7 +4,6 @@ import { Flex, Group, Stack, Text } from '@mantine/core'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
-import { twJoin, twMerge } from 'tailwind-merge'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
 import GradientTitle from '@/components/labels/GradientTitle'
@@ -15,6 +14,7 @@ import {
   GitHubLink,
   NpmLink,
 } from '@/components/tags/TechLink'
+import { cn } from '@/lib/style'
 
 export type OpenItemType = 'npm' | 'docker'
 
@@ -56,11 +56,8 @@ export default function OpenItem(props: OpenItemProps) {
 
   return (
     <BlurPopupCard
-      className={twMerge(
-        'rounded-md',
-        current ? `from-lb-100 bg-gradient-to-r to-transparent` : ''
-      )}
-      popupClassName={twJoin(
+      className={cn('rounded-md', current ? `from-lb-100 bg-gradient-to-r to-transparent` : '')}
+      popupClassName={cn(
         current ? `from-lb-200 bg-gradient-to-br via-transparent to-transparent` : ''
       )}
       px={8}

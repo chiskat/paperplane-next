@@ -10,10 +10,10 @@ import {
 } from '@tabler/icons-react'
 import Link from 'next/link'
 import { FC, useMemo } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import GradientTitle from '@/components/labels/GradientTitle'
 import { KVTable, KVTableRow } from '@/components/tables/KVTable'
+import { cn } from '@/lib/style'
 import WrapperForItem from './WrapperForItem'
 
 export interface DemosItemProps {
@@ -108,7 +108,7 @@ function DemosTag(props: { label: string; icon: FC<IconProps>; className?: strin
   const { label, icon: Icon, className } = props
   return (
     <Text
-      className={twMerge('flex pb-1 align-middle', className)}
+      className={cn('flex pb-1 align-middle', className)}
       component="span"
       size="sm"
       c="gray.6"

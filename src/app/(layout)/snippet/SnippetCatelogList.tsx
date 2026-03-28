@@ -5,8 +5,8 @@ import { IconPointFilled } from '@tabler/icons-react'
 import NextImage from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { twMerge } from 'tailwind-merge'
 
+import { cn } from '@/lib/style'
 import { groups, SnippetCatelog, SnippetCatelogGroup } from './list'
 
 const defaultIcon = require('@/assets/snippet-icons/default.svg').default
@@ -59,7 +59,7 @@ function ItemCatelog(props: { catelog: SnippetCatelog }) {
   return (
     <nav>
       <Link
-        className={twMerge(
+        className={cn(
           'inline-flex cursor-pointer rounded-md px-2 py-[2px] text-[16px] leading-[1.4] text-[#333] hover:underline',
           current ? 'from-lb-100 to-lb-50 bg-gradient-to-r' : ''
         )}

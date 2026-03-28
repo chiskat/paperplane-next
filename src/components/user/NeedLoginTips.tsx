@@ -1,7 +1,8 @@
 import { Group, Stack, Text } from '@mantine/core'
 import { IconCircleKey } from '@tabler/icons-react'
 import { CSSProperties, ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 export interface NeedLoginTipsProps {
   title?: ReactNode
@@ -17,7 +18,7 @@ export default function NeedLoginTips(props: NeedLoginTipsProps) {
 
   return (
     <Group
-      className={twMerge('cursor-default flex-nowrap rounded-md bg-yellow-200', className)}
+      className={cn('cursor-default flex-nowrap rounded-md bg-yellow-200', className)}
       px={16}
       py={12}
       gap={12}

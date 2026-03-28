@@ -1,7 +1,8 @@
 import { Image } from '@mantine/core'
 import NextImage from 'next/image'
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 interface BaseLinkProps {
   href: string
@@ -14,7 +15,7 @@ function BaseLink(props: BaseLinkProps) {
   const { href, icon, className, children } = props
 
   return (
-    <a href={href} target="_blank" className={twMerge('text-lb hover:underline', className)}>
+    <a href={href} target="_blank" className={cn('text-lb hover:underline', className)}>
       {icon ? (
         <Image
           w="1em"

@@ -1,6 +1,7 @@
 import { MantineGradient, Text, TextProps } from '@mantine/core'
 import { CSSProperties, ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 export interface GradientTitleProps extends TextProps {
   children: ReactNode
@@ -25,7 +26,7 @@ export default function GradientTitle(props: GradientTitleProps) {
       variant="gradient"
       gradient={gradient}
       size={size}
-      className={twMerge('cursor-default font-serif', className)}
+      className={cn('cursor-default font-serif', className)}
     >
       {children}
     </Text>

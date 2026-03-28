@@ -2,9 +2,9 @@
 
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { BlurPopupCard } from '@/components/cards/BlurPopupCard'
+import { cn } from '@/lib/style'
 
 export interface WrapperForItemProps {
   subpath?: string
@@ -20,11 +20,8 @@ export default function WrapperForItem(props: WrapperForItemProps) {
 
   return (
     <BlurPopupCard
-      className={twMerge(
-        'rounded-md',
-        current ? `from-lb-100 bg-gradient-to-r to-transparent` : ''
-      )}
-      popupClassName={twMerge(
+      className={cn('rounded-md', current ? `from-lb-100 bg-gradient-to-r to-transparent` : '')}
+      popupClassName={cn(
         current ? `from-lb-200 bg-gradient-to-br via-transparent to-transparent` : ''
       )}
       right={12}

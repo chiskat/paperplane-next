@@ -1,6 +1,7 @@
 import { Table, TableProps, TableTbody, TableTd, TableTr } from '@mantine/core'
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
+
+import { cn } from '@/lib/style'
 
 export interface KVTableProps {
   tableProps?: TableProps
@@ -41,7 +42,7 @@ export function KVTableRow(props: KVTableRowProps) {
   return (
     <TableTr className={className}>
       <TableTd
-        className={twMerge(
+        className={cn(
           'w-0 cursor-default pr-2 align-top leading-[1.6] text-nowrap text-gray-900',
           classNames?.label
         )}
@@ -49,9 +50,7 @@ export function KVTableRow(props: KVTableRowProps) {
         {icon} {label}：
       </TableTd>
 
-      <TableTd
-        className={twMerge('align-top font-sans leading-[1.6] text-gray-600', classNames?.field)}
-      >
+      <TableTd className={cn('align-top font-sans leading-[1.6] text-gray-600', classNames?.field)}>
         {children}
       </TableTd>
     </TableTr>

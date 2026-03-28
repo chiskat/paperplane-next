@@ -4,10 +4,10 @@ import { Group, luminance, Text, Tooltip } from '@mantine/core'
 import { IconGripVertical } from '@tabler/icons-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { CSSProperties } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
+import { cn } from '@/lib/style'
 import { useTRPC } from '@/lib/trpc-client'
 import { AwesomeTag } from '@/prisma/client'
 import TagEditButton from './TagEditButton'
@@ -43,7 +43,7 @@ export default function TagItem(props: TagItemProps & DraggableWrapperProps) {
 
   return (
     <Group
-      className={twMerge(
+      className={cn(
         'relative flex cursor-pointer flex-nowrap items-center rounded-md px-2 py-1 select-none',
         className
       )}

@@ -1,7 +1,6 @@
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
-import { twJoin } from 'tailwind-merge'
 import * as z from 'zod'
 import { zhCN } from 'zod/locales'
 
@@ -12,6 +11,8 @@ import { fontFZYanSong, fontIosevka, fontSwift } from './fonts'
 
 import '@mantine/dates/styles.css'
 import '@/styles/app.css'
+
+import { cn } from '@/lib/style'
 
 z.config(zhCN())
 
@@ -25,7 +26,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html
       lang="zh-CN"
       {...mantineHtmlProps}
-      className={twJoin(
+      className={cn(
         fontFZYanSong.variable,
         fontIosevka.variable,
         fontSwift.variable,

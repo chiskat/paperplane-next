@@ -14,9 +14,9 @@ import {
 } from '@mantine/core'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { authClient, useSession } from '@/lib/auth-client'
+import { cn } from '@/lib/style'
 import LoginButton from './LoginButton'
 
 function UserStatus(props: { className?: string }) {
@@ -35,11 +35,7 @@ function UserStatus(props: { className?: string }) {
   return (
     <HoverCard>
       <HoverCardTarget>
-        <Flex
-          className={twMerge('cursor-pointer self-start', props.className)}
-          align="center"
-          gap={8}
-        >
+        <Flex className={cn('cursor-pointer self-start', props.className)} align="center" gap={8}>
           {!isPending ? (
             <>
               <Text size="sm" ff="sans-serif">

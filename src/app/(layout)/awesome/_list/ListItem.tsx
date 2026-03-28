@@ -5,11 +5,11 @@ import { IconGripVertical, IconMichelinStar, IconPointFilled } from '@tabler/ico
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
 import { CSSProperties } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { AwesomeItemResult } from '@/app/api/trpc/_awesome/items'
 import ConfirmButton from '@/components/buttons/ConfirmButton'
 import { DraggableWrapperProps } from '@/components/layouts/Draggable'
+import { cn } from '@/lib/style'
 import { useTRPC } from '@/lib/trpc-client'
 import { AwesomeCatelog } from '@/prisma/client'
 import BadgeSites from './BadgeSites'
@@ -60,7 +60,7 @@ export default function ListItem(props: ListItemsProps & DraggableWrapperProps) 
 
   return (
     <Group
-      className={twMerge(
+      className={cn(
         'flex-nowrap rounded-md bg-white/60 backdrop-blur-lg hover:bg-gray-100',
         className
       )}
