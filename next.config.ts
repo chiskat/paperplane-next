@@ -10,15 +10,8 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: process.env.NODE_ENV === 'development',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
+    unoptimized: true,
     remotePatterns: [{ protocol: 'https', hostname: process.env.NEXT_PUBLIC_SHIELDS_HOST! }],
-    loader:
-      process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_CDN_BASE_URL
-        ? 'custom'
-        : undefined,
-    loaderFile:
-      process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_CDN_BASE_URL
-        ? './misc/image-loader.js'
-        : undefined,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
