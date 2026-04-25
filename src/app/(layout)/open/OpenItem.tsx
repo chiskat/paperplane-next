@@ -76,8 +76,8 @@ export default function OpenItem(props: OpenItemProps) {
                 <img
                   src={
                     type === 'npm'
-                      ? `https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/npm/v/${nameInLink}?style=flat-square&logo=npm&label=%20&color=rgba(255,255,255,0)&logoColor=CB0000`
-                      : `https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/docker/v/${nameInLink}?style=flat-square&logo=docker&label=%20&color=rgba(255,255,255,0)&sort=semver`
+                      ? `https://shields.paperplane.cc/npm/v/${nameInLink}?style=flat-square&logo=npm&label=%20&color=rgba(255,255,255,0)&logoColor=CB0000&cacheSeconds=86400`
+                      : `https://shields.paperplane.cc/docker/v/${nameInLink}?style=flat-square&logo=docker&label=%20&color=rgba(255,255,255,0)&sort=semver&cacheSeconds=86400`
                   }
                   className="h-[26px]"
                   alt={type === 'npm' ? `package version on npm` : `image version on docker hub`}

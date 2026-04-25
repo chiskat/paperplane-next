@@ -51,7 +51,7 @@ export function DemosDetailTable(props: DemosDetailTableProps) {
             <a href={`https://drone.paperplane.cc/${backendRepo}`} target="_blank">
               <img
                 className="h-[20px]"
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/drone/build/${backendRepo}?server=https%3A%2F%2Fdrone.paperplane.cc&style=flat&logo=drone`}
+                src={`https://shields.paperplane.cc/drone/build/${backendRepo}?server=https%3A%2F%2Fdrone.paperplane.cc&style=flat&logo=drone&cacheSeconds=86400`}
                 alt="CI/CD status"
               />
             </a>

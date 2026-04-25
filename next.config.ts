@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
     unoptimized: true,
-    remotePatterns: [{ protocol: 'https', hostname: process.env.NEXT_PUBLIC_SHIELDS_HOST! }],
+    remotePatterns: [{ protocol: 'https', hostname: 'shields.paperplane.cc' }],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

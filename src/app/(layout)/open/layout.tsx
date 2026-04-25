@@ -67,7 +67,7 @@ export default async function OpenLayout(props: LayoutProps<'/open'>) {
             overrideNameInLink="chiskat/baseline-node20"
             renderShield={
               <img
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/docker/v/chiskat/baseline-node20?style=flat-square&label=%20&color=rgba(255,255,255,0)&sort=semver`}
+                src={`https://shields.paperplane.cc/docker/v/chiskat/baseline-node20?style=flat-square&label=%20&color=rgba(255,255,255,0)&sort=semver&cacheSeconds=86400`}
                 className="mx-auto mt-[2px] h-[22px]"
                 alt="image version on docker hub"
               />

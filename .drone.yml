@@ -65,7 +65,7 @@ steps:
       script:
         - cd /root/project-config/paperplane-next
         - |
-          docker run -t --rm --name paperplane-next-prisma --network root_default -e NODE_ENV=production \
+          docker run -t --rm --name paperplane-next-prisma --network pgsql -e NODE_ENV=production \
           -v ./.env.production.local:/paperplane-next/.env.production.local:ro \
           chiskat/paperplane-next:${DRONE_COMMIT_SHA:0:8} pnpm db:deploy
 
@@ -140,8 +140,9 @@ steps:
         - failure
     settings:
       host:
-        - 'paperplane.cc'
-      username: root
+        from_secret: DEPLOY_SSH_HOST
+      username:
+        from_secret: DEPLOY_SSH_USER
       key:
         from_secret: DEPLOY_SSH_PRIKEY
       command_timeout: 20m

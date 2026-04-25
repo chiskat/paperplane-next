@@ -74,7 +74,7 @@ export function OpenDetailTable(props: OpenDetailTableProps) {
           {type === 'docker' ? (
             <a href={`https://hub.docker.com/r/${nameInLink}`} target="_blank">
               <img
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/docker/v/${nameInLink}?logo=docker&sort=semver`}
+                src={`https://shields.paperplane.cc/docker/v/${nameInLink}?logo=docker&sort=semver&cacheSeconds=86400`}
                 alt="image version on docker hub"
                 className="h-[20px]"
               />
@@ -82,7 +82,7 @@ export function OpenDetailTable(props: OpenDetailTableProps) {
           ) : (
             <a href={`https://npmjs.com/package/${nameInLink}`} target="_blank">
               <img
-                src={`https://${process.env.NEXT_PUBLIC_SHIELDS_HOST}/npm/v/${nameInLink}?logo=npm`}
+                src={`https://shields.paperplane.cc/npm/v/${nameInLink}?logo=npm&cacheSeconds=86400`}
                 alt="package version on npm"
                 className="h-[20px]"
               />
